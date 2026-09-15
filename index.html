@@ -1029,6 +1029,32 @@ b, strong { color: var(--gold-light); font-weight:700; }
 }
 .demo-video-frame video { width:100%; height:100%; object-fit:contain; display:block; background:#000; }
 
+/* A single department reads as a centred panel rather than one lonely cell
+   in a three-column grid. */
+.single-dept {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+}
+.single-dept .role-card {
+  width: 880px;
+  padding: 36px 48px;
+  gap: 0;
+}
+.single-dept .role-category {
+  font-size: 46px;
+  letter-spacing: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+.single-dept .role-list { gap: 20px; flex: 0 0 auto; }
+.single-dept .role-list li { font-size: 29px; padding-left: 38px; }
+.single-dept .role-list li::before { font-size: 0.6em; top: 7px; }
+.single-dept .role-note { font-size: 0.66em; }
+
 /* ============================================
    MEDIA HOSTS  (JS resolves the extension: mp4 / gif / png / jpg / webp)
    ============================================ */
@@ -1680,75 +1706,16 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="slide-inner top-aligned">
       <h2 class="section-title">The Team We&rsquo;re Building</h2>
 
-      <div class="recruiting-grid">
+      <div class="single-dept">
         <div class="role-card">
-          <div class="role-category">Narrative</div>
-          <ul class="role-list">
-            <li>Narrative Designer <span class="role-note">(Unity game design)</span></li>
-            <li>Writer</li>
-          </ul>
-        </div>
-
-        <div class="role-card">
-          <div class="role-category">Design</div>
-          <ul class="role-list">
-            <li class="featured">Design Lead</li>
-            <li>Secrets Designer</li>
-            <li>Combat Designer</li>
-          </ul>
-        </div>
-
-        <div class="role-card">
-          <div class="role-category">Audio</div>
-          <ul class="role-list">
-            <li>Sound Designer <span class="role-note">(Wwise, SFX)</span></li>
-          </ul>
-        </div>
-
-        <div class="role-card span-tall">
           <div class="role-category">Art</div>
           <ul class="role-list">
-            <li class="featured">Art Director</li>
-            <li>2D Artist</li>
-            <li>Concept Artist</li>
-            <li>3D Generalist <span class="role-note">(character, modeling, rigging, animation, tech art)</span></li>
-            <li class="featured">3D Environment Artist</li>
-            <li>Technical Artist</li>
-            <li>UI Artist</li>
-            <li>VFX Artist</li>
-          </ul>
-        </div>
-
-        <div class="role-card">
-          <div class="role-category">Engineering</div>
-          <ul class="role-list">
-            <li class="featured">Technical Director <span class="role-note">(roguelike systems)</span></li>
-            <li>Engineering Lead <span class="role-note">(roguelike systems)</span></li>
-            <li>Systems Engineer</li>
-            <li>General Engineer <span class="role-note">(Unity)</span></li>
-            <li>Audio Engineer <span class="role-note">(Wwise)</span></li>
-          </ul>
-        </div>
-
-        <div class="role-card">
-          <div class="role-category">Producing</div>
-          <ul class="role-list">
-            <li class="featured">Art Producer</li>
-            <li>Associate Producer</li>
-          </ul>
-        </div>
-
-        <div class="role-card">
-          <div class="role-category">QA</div>
-          <ul class="role-list">
-            <li>QA Lead</li>
-          </ul>
-        </div>
-
-        <div class="role-card">
-          <div class="role-category">Marketing</div>
-          <ul class="role-list">
-            <li>Marketing <span class="role-note">(social media / digital content)</span></li>
+            <li>2D Environment Artists</li>
+            <li>3D Generalist <span class="role-note">(modeler, rigger, OR animator!)</span></li>
+            <li>3D Environment Artists</li>
+            <li>Technical Artists</li>
+            <li>VFX Artists</li>
+            <li>UI Artists</li>
           </ul>
         </div>
       </div>
