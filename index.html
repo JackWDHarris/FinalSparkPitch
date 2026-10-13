@@ -1373,14 +1373,289 @@ b, strong { color: var(--gold-light); font-weight:700; }
 /* Slide 21 carries the longest single block in the deck. */
 /* Four stacked beats cap the plate height, so buy room from the padding and
    the row gap and spend all of it on the images. */
-#slide-8.slide,
-#slide-6.slide { padding-top: 22px; padding-bottom: 56px; }
+#slide-7.slide { padding-top: 22px; padding-bottom: 56px; }
 
-#slide-9 .narrative-text {
+#slide-8 .narrative-text {
   max-width: 1340px;
   font-size: 34px;
   line-height: 1.55;
 }
+
+/* ============================================
+   ART SECTION  (slides 9-22, from the art-recruitment deck)
+   ============================================ */
+/* Everything under a section title sits centred in the space left below it. */
+.ad-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding-bottom: 20px;
+}
+
+.ad-split {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.ad-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* One framed piece of art. Single plates are sized in px from the art's own
+   aspect ratio; plates inside an .ad-row size themselves (below). */
+.ad-plate {
+  flex: 0 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(59,130,246,0.22);
+  box-shadow: 0 12px 34px rgba(0,0,0,0.58), 0 0 24px rgba(59,130,246,0.10);
+  background: rgba(4,8,16,0.45);
+  line-height: 0;
+}
+.ad-plate.gold {
+  border-color: rgba(245,158,11,0.32);
+  box-shadow: 0 0 42px rgba(245,158,11,0.16), 0 18px 42px rgba(0,0,0,0.6);
+}
+
+/* A justified row: each plate grows in proportion to its aspect ratio (--ar),
+   so every plate in the row lands at the same height and none is cropped.
+   Set the row's width and the height follows. */
+.ad-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap, 24px);
+}
+.ad-row > .ad-plate {
+  flex: var(--ar) 1 0px;
+  min-width: 0;
+  aspect-ratio: var(--ar);
+}
+
+/* ---------- type ---------- */
+.ad-copy {
+  font-family: 'Cinzel', serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  text-shadow: 0 0 40px rgba(59,130,246,0.2);
+  text-wrap: pretty;
+}
+.ad-copy.center { text-align: center; text-wrap: balance; }
+.ad-copy + .ad-copy { margin-top: 26px; }
+.ad-copy em,
+.ad-duty em {
+  font-style: normal;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--blue-bright), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.ad-lead {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.ad-aside {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: -10px;
+}
+
+.ad-label {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gold-light);
+}
+
+/* ---------- cards (same language as the role cards) ---------- */
+.ad-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+}
+.ad-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-electric), var(--gold), transparent);
+  opacity: 0.6;
+}
+.ad-card.ad-pad { padding: 34px 40px; }
+.ad-card .ad-lead { margin-bottom: 22px; }
+
+.ad-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0; margin: 0;
+}
+.ad-list li {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #e6ecf8;
+  padding-left: 38px;
+  position: relative;
+}
+.ad-list li::before {
+  content: '\26A1';
+  position: absolute;
+  left: 0; top: 4px;
+  color: var(--gold);
+  font-size: 0.72em;
+}
+.ad-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72em;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ---------- 2D art duties ---------- */
+.ad-duties {
+  display: grid;
+  grid-template-columns: repeat(2, 580px);
+  gap: 24px;
+}
+.ad-duty {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 150px;
+  padding: 26px 34px;
+}
+.ad-glyph {
+  flex: 0 0 auto;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  color: var(--gold-light);
+  background: rgba(245,158,11,0.10);
+  border: 1px solid rgba(245,158,11,0.40);
+  box-shadow: 0 0 22px rgba(245,158,11,0.18);
+}
+.ad-duty p {
+  font-family: 'Inter', sans-serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #e6ecf8;
+}
+
+/* ---------- 2D art roles: one column card per role ---------- */
+.ad-cols {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+}
+.ad-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 18px 20px;
+}
+.ad-col-head {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(59,130,246,0.18);
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(135deg, var(--blue-bright), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.ad-col-head .ad-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: none;
+  -webkit-text-fill-color: var(--text-muted);
+}
+.ad-col-art {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.ad-col-art > .ad-row { width: 100%; }
+
+/* ---------- tech art roles ---------- */
+.ad-chips {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.ad-chip {
+  min-width: 300px;
+  padding: 20px 30px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+}
+.ad-chip .ad-note { display: inline; font-family: 'Inter', sans-serif; font-size: 0.7em; letter-spacing: 1px; }
+
+.ad-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- UI references ---------- */
+.ad-refs {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.ad-ref {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ad-refs .ad-plate { border-radius: 8px; }
 
 /* ============================================
    RESPONSIVE
@@ -1391,7 +1666,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
 </head>
 <body>
 
-<div id="progress-bar" style="width:9.1%;"></div>
+<div id="progress-bar" style="width:4.3%;"></div>
 <canvas id="global-particles"></canvas>
 
 <button class="nav-arrow left"  id="nav-left"  aria-label="Previous">&#10094;</button>
@@ -1401,7 +1676,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   <div class="footer-left">
     <span class="spark">&#9889;</span> Final Spark &nbsp;|&nbsp; Pitch &nbsp;|&nbsp; Jack Desmarais-Harris &nbsp;|&nbsp; jdesmara@usc.edu
   </div>
-  <div class="slide-counter" id="slide-counter">1 / 11</div>
+  <div class="slide-counter" id="slide-counter">1 / 23</div>
 </div>
 
 <div id="hint">&larr; &rarr; navigate &nbsp;&middot;&nbsp; F fullscreen</div>
@@ -1561,47 +1836,8 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
   </div>
 
-  <!-- ===== 6 · LOOKS LIKE ===== -->
+  <!-- ===== 6 · SECRETS INSIDE AN AUTOBATTLER ===== -->
   <div class="slide" id="slide-6" data-slide="6">
-    <div class="slide-bg bg-gradient-navy bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb gold" style="width:500px;height:500px;top:20%;left:30%;animation:calmPulse 6s ease-in-out infinite;"></div>
-      <div class="glow-orb blue" style="width:400px;height:400px;bottom:15%;right:20%;animation:calmPulse 8s ease-in-out infinite 1s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
-    <div class="slide-inner top-aligned">
-      <h2 class="section-title">What If It Looked Like This?</h2>
-      <div class="art-collage">
-        <div class="ac-row">
-          <div class="ac-cell c-env  media" data-media="assets/art-environment" data-mode="still" data-need="Art &mdash; environment"></div>
-          <div class="ac-cell c-cart media" data-media="assets/art-character"   data-mode="still" data-need="Art &mdash; character art"></div>
-        </div>
-        <div class="ac-row">
-          <div class="art-note">
-            <div class="an-head">2D</div>
-            <ul class="an-list">
-              <li>God portraits with <em>action poses</em></li>
-              <li>Emphasis on <em>iconography</em></li>
-              <li>A <em>new, modern perspective</em> on iconic gods</li>
-            </ul>
-          </div>
-          <div class="ac-cell c-mor media" data-media="assets/art-morrigan" data-mode="still" data-need="Art &mdash; Morrigan"></div>
-          <div class="ac-cell c-anu media" data-media="assets/art-anubis"   data-mode="still" data-need="Art &mdash; Anubis"></div>
-          <div class="art-note">
-            <div class="an-head">3D</div>
-            <ul class="an-list">
-              <li><em>Painterly</em>, cartoonish</li>
-              <li><em>Dark, gloomy</em> environments</li>
-              <li><em>Heavily saturated</em> highlights</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 7 · SECRETS INSIDE AN AUTOBATTLER ===== -->
-  <div class="slide" id="slide-7" data-slide="7">
     <div class="slide-bg bg-gradient-center bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb purple" style="width:560px;height:560px;top:18%;left:28%;animation:calmPulse 7s ease-in-out infinite;"></div>
@@ -1617,8 +1853,8 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
   </div>
 
-  <!-- ===== 8 · THE WORLD ===== -->
-  <div class="slide" id="slide-8" data-slide="8">
+  <!-- ===== 7 · THE WORLD ===== -->
+  <div class="slide" id="slide-7" data-slide="7">
     <div class="slide-bg bg-gradient-center bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb purple" style="width:600px;height:600px;top:14%;left:50%;transform:translateX(-50%);animation:calmPulse 8s ease-in-out infinite;"></div>
@@ -1666,8 +1902,8 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
   </div>
 
-  <!-- ===== 9 · REWEAVE THE THREADS ===== -->
-  <div class="slide" id="slide-9" data-slide="9">
+  <!-- ===== 8 · REWEAVE THE THREADS ===== -->
+  <div class="slide" id="slide-8" data-slide="8">
     <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb gold" style="width:600px;height:600px;top:20%;left:30%;animation:calmPulse 7s ease-in-out infinite;"></div>
@@ -1695,8 +1931,145 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
   </div>
 
-  <!-- ===== 10 · ROLES ===== -->
+  <!-- ===== 9 · STYLE OVERVIEW — WHO WE'RE LOOKING FOR ===== -->
+  <div class="slide" id="slide-9" data-slide="9">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb purple" style="width:540px;height:540px;top:18%;left:16%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb gold"   style="width:460px;height:460px;bottom:12%;right:18%;animation:calmPulse 6s ease-in-out infinite 1s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Style Overview</h2>
+      <div class="ad-body">
+        <div class="ad-split">
+          <div style="width:640px;">
+            <p class="ad-copy">We are looking for artists who love making grand, mythical, and moody art.</p>
+            <p class="ad-copy">If you love the idea of <em>gods</em> clashing over <em>fate</em> itself in a world plunged into <em>ruin</em> and chaos, then this project is for you!</p>
+          </div>
+          <div class="ad-plate gold media" style="width:462px;height:600px;" data-media="assets/style-1" data-mode="still" data-need="Style &mdash; key art"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 10 · STYLE OVERVIEW — KEY DETAILS ===== -->
   <div class="slide" id="slide-10" data-slide="10">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb blue" style="width:520px;height:520px;top:20%;left:20%;animation:calmPulse 6s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:440px;height:440px;bottom:14%;right:22%;animation:calmPulse 8s ease-in-out infinite 1.4s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Style Overview</h2>
+      <div class="ad-body">
+        <div class="ad-split">
+          <div class="ad-card ad-pad" style="width:660px;">
+            <p class="ad-lead">Key details about our art style:</p>
+            <ul class="ad-list">
+              <li>Dark gloomy environments</li>
+              <li>Characters with high contrast</li>
+              <li>Details placed with intention</li>
+              <li>Stylized painterly textures</li>
+              <li>Exaggerated proportions</li>
+            </ul>
+          </div>
+          <div class="ad-plate gold media" style="width:380px;height:580px;" data-media="assets/style-morrigan" data-mode="still" data-need="Style &mdash; Morrigan concept"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 11 · STYLE OVERVIEW — INSPIRATIONS ===== -->
+  <div class="slide" id="slide-11" data-slide="11">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb purple" style="width:560px;height:560px;top:22%;left:28%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb blue"   style="width:440px;height:440px;bottom:10%;right:20%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Style Overview</h2>
+      <div class="ad-body">
+        <p class="ad-copy center">Our inspirations are the Ori games, Hades, and League of Legends</p>
+        <div class="ad-row" style="width:1250px;--gap:28px;">
+          <div class="ad-plate media" style="--ar:0.897;" data-media="assets/insp-ori"    data-mode="still" data-need="Inspiration &mdash; Ori"><span class="ct-label">Ori</span></div>
+          <div class="ad-plate media" style="--ar:0.899;" data-media="assets/insp-hades"  data-mode="still" data-need="Inspiration &mdash; Hades"><span class="ct-label">Hades</span></div>
+          <div class="ad-plate media" style="--ar:0.886;" data-media="assets/insp-league" data-mode="still" data-need="Inspiration &mdash; League of Legends"><span class="ct-label">League of Legends</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 12 · 3D ART ROLES ===== -->
+  <div class="slide" id="slide-12" data-slide="12">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb blue" style="width:560px;height:560px;top:16%;left:18%;animation:calmPulse 6s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:460px;height:460px;bottom:12%;right:24%;animation:calmPulse 7s ease-in-out infinite 1s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">3D Art Roles</h2>
+      <div class="ad-body">
+        <div class="ad-split" style="gap:40px;">
+          <div class="ad-card ad-pad" style="width:420px;">
+            <ul class="ad-list">
+              <li>Character Modeler</li>
+              <li>Creature Modeler</li>
+              <li>Prop Artist</li>
+              <li>Environmental Artist</li>
+              <li>Animator/Rigger <span class="ad-note">(Human/Creature)</span></li>
+            </ul>
+          </div>
+          <div class="ad-stack" style="width:800px;">
+            <div class="ad-plate media" style="width:800px;height:265px;" data-media="assets/art3d-lineup"   data-mode="still" data-need="3D &mdash; character lineup"></div>
+            <div class="ad-plate media" style="width:429px;height:300px;" data-media="assets/art3d-creature" data-mode="still" data-need="3D &mdash; creature concept"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 13 · WHAT WE ALREADY HAVE — ANUBIS ===== -->
+  <div class="slide" id="slide-13" data-slide="13">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb gold" style="width:620px;height:620px;top:18%;left:30%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb blue" style="width:440px;height:440px;bottom:12%;right:18%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="16"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">What We Already Have</h2>
+      <div class="ad-body">
+        <div class="ad-plate gold media" style="width:1130px;height:636px;" data-media="assets/have-anubis-3d" data-mode="still" data-need="Anubis &mdash; 3D character sheet"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 14 · WHAT WE ALREADY HAVE — 3D PROPS ===== -->
+  <div class="slide" id="slide-14" data-slide="14">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb purple" style="width:580px;height:580px;top:20%;left:24%;animation:calmPulse 8s ease-in-out infinite;"></div>
+      <div class="glow-orb gold"   style="width:420px;height:420px;bottom:14%;right:22%;animation:calmPulse 6s ease-in-out infinite 1.2s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">What We Already Have</h2>
+      <div class="ad-body">
+        <div class="ad-row" style="width:1240px;">
+          <div class="ad-plate media" style="--ar:1.286;" data-media="assets/have-prop-1" data-mode="still" data-need="3D prop 1"></div>
+          <div class="ad-plate media" style="--ar:0.775;" data-media="assets/have-prop-2" data-mode="still" data-need="3D prop 2"></div>
+          <div class="ad-plate media" style="--ar:1.009;" data-media="assets/have-prop-3" data-mode="still" data-need="3D prop 3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 15 · 2D ART ===== -->
+  <div class="slide" id="slide-15" data-slide="15">
     <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb blue" style="width:600px;height:600px;top:15%;left:25%;animation:calmPulse 6s ease-in-out infinite;"></div>
@@ -1704,26 +2077,237 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">The Team We&rsquo;re Building</h2>
-
-      <div class="single-dept">
-        <div class="role-card">
-          <div class="role-category">Art</div>
-          <ul class="role-list">
-            <li>2D Environment Artists</li>
-            <li>3D Generalist <span class="role-note">(modeler, rigger, OR animator!)</span></li>
-            <li>3D Environment Artists</li>
-            <li>Technical Artists</li>
-            <li>VFX Artists</li>
-            <li>UI Artists</li>
-          </ul>
+      <h2 class="section-title">2D Art</h2>
+      <div class="ad-body">
+        <p class="ad-lead">2D artists will be expected to:</p>
+        <div class="ad-duties">
+          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Concept characters <em>AND</em> environments</p></div>
+          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Make turnaround character sheets for our 3D artists</p></div>
+          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Draw items and relics</p></div>
+          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Create 2D backgrounds for our environments</p></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 11 · CLOSE ===== -->
-  <div class="slide" id="slide-11" data-slide="11">
+  <!-- ===== 16 · 2D ART ROLES ===== -->
+  <div class="slide" id="slide-16" data-slide="16">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb blue" style="width:540px;height:540px;top:18%;left:20%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:460px;height:460px;bottom:12%;right:20%;animation:calmPulse 6s ease-in-out infinite 1.2s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="10"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">2D Art Roles</h2>
+      <div class="ad-body">
+        <div class="ad-cols">
+          <div class="ad-card ad-col" style="width:440px;">
+            <div class="ad-col-head">Concept Artists<span class="ad-note">(Human/Creature)</span></div>
+            <div class="ad-col-art">
+              <div class="ad-row" style="--gap:10px;">
+                <div class="ad-plate media" style="--ar:2.020;" data-media="assets/art2d-concept-1" data-mode="still" data-need="Concept reference 1"></div>
+                <div class="ad-plate media" style="--ar:1.283;" data-media="assets/art2d-concept-2" data-mode="still" data-need="Concept reference 2"></div>
+              </div>
+              <div class="ad-row" style="--gap:10px;">
+                <div class="ad-plate media" style="--ar:1.784;" data-media="assets/art2d-concept-3" data-mode="still" data-need="Concept reference 3"></div>
+                <div class="ad-plate media" style="--ar:1.373;" data-media="assets/art2d-concept-4" data-mode="still" data-need="Concept reference 4"></div>
+              </div>
+              <div class="ad-plate media" style="width:260px;height:174px;" data-media="assets/art2d-concept-5" data-mode="still" data-need="Concept reference 5"></div>
+            </div>
+          </div>
+
+          <div class="ad-card ad-col" style="width:340px;">
+            <div class="ad-col-head">Portrait Artists</div>
+            <div class="ad-col-art">
+              <div class="ad-plate media" style="width:304px;height:266px;" data-media="assets/art2d-portrait" data-mode="still" data-need="Portrait reference"></div>
+            </div>
+          </div>
+
+          <div class="ad-card ad-col" style="width:440px;">
+            <div class="ad-col-head">Landscape Artists</div>
+            <div class="ad-col-art">
+              <div class="ad-row" style="--gap:10px;">
+                <div class="ad-plate media" style="--ar:1.786;" data-media="assets/art2d-landscape-1" data-mode="still" data-need="Landscape reference 1"></div>
+                <div class="ad-plate media" style="--ar:1.341;" data-media="assets/art2d-landscape-2" data-mode="still" data-need="Landscape reference 2"></div>
+              </div>
+              <div class="ad-row" style="--gap:10px;">
+                <div class="ad-plate media" style="--ar:0.926;" data-media="assets/art2d-landscape-3" data-mode="still" data-need="Landscape reference 3"></div>
+                <div class="ad-plate media" style="--ar:1.791;" data-media="assets/art2d-landscape-4" data-mode="still" data-need="Landscape reference 4"></div>
+              </div>
+              <div class="ad-plate media" style="width:260px;height:184px;" data-media="assets/art2d-landscape-5" data-mode="still" data-need="Final Spark environment sketch"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 17 · WHAT WE ALREADY HAVE — 2D ===== -->
+  <div class="slide" id="slide-17" data-slide="17">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb gold"   style="width:560px;height:560px;top:16%;left:22%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb purple" style="width:480px;height:480px;bottom:12%;right:20%;animation:calmPulse 8s ease-in-out infinite 1s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">What We Already Have</h2>
+      <div class="ad-body">
+        <div class="ad-split" style="gap:24px;">
+          <div class="ad-stack" style="gap:20px;">
+            <div class="ad-plate media" style="width:505px;height:399px;" data-media="assets/have-morrigan-turnaround" data-mode="still" data-need="Morrigan &mdash; turnaround"></div>
+            <div class="ad-plate media" style="width:505px;height:167px;" data-media="assets/art3d-lineup"             data-mode="still" data-need="Character lineup"></div>
+          </div>
+          <div class="ad-plate media" style="width:711px;height:587px;" data-media="assets/have-anubis-sketches" data-mode="still" data-need="Anubis &mdash; sketches"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 18 · TECH ART ===== -->
+  <div class="slide" id="slide-18" data-slide="18">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb purple" style="width:560px;height:560px;top:18%;left:28%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb blue"   style="width:440px;height:440px;bottom:14%;right:22%;animation:calmPulse 6s ease-in-out infinite 1.3s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="18"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Tech Art</h2>
+      <div class="ad-body">
+        <p class="narrative-text mid">
+          Tech artists on this project will be doing mostly 2D and 3D <em>VFX</em> work,
+          with an expertise in writing <em>shaders</em> and/or <em>lighting</em> scenes
+          with purpose a massive plus.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 19 · TECH ART ROLES ===== -->
+  <div class="slide" id="slide-19" data-slide="19">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb purple" style="width:600px;height:600px;top:24%;left:30%;animation:calmPulse 8s ease-in-out infinite;"></div>
+      <div class="glow-orb blue"   style="width:420px;height:420px;top:12%;right:18%;animation:calmPulse 6s ease-in-out infinite 1s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Tech Art Roles</h2>
+      <div class="ad-body" style="gap:28px;">
+        <div class="ad-chips">
+          <div class="ad-card ad-chip">Shader Artist / Programmer</div>
+          <div class="ad-card ad-chip">Lighting Artist</div>
+          <div class="ad-card ad-chip">VFX Artist <span class="ad-note">(2D/3D)</span></div>
+        </div>
+        <div class="ad-grid" style="width:1000px;">
+          <div class="ad-row" style="--gap:16px;">
+            <div class="ad-plate media" style="--ar:1.782;" data-media="assets/techart-ref-1" data-mode="still" data-need="Tech art reference 1"></div>
+            <div class="ad-plate media" style="--ar:1.780;" data-media="assets/techart-ref-2" data-mode="still" data-need="Tech art reference 2"></div>
+          </div>
+          <div class="ad-row" style="--gap:16px;">
+            <div class="ad-plate media" style="--ar:2.255;" data-media="assets/techart-ref-3" data-mode="still" data-need="Tech art reference 3"></div>
+            <div class="ad-plate media" style="--ar:2.474;" data-media="assets/techart-ref-4" data-mode="still" data-need="Tech art reference 4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 20 · UI ART ROLES ===== -->
+  <div class="slide" id="slide-20" data-slide="20">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb gold" style="width:540px;height:540px;top:16%;left:24%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb blue" style="width:460px;height:460px;bottom:12%;right:22%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">UI Art Roles</h2>
+      <div class="ad-body">
+        <p class="ad-copy center" style="max-width:1200px;">We are interested in someone who can capture the look of our fallen world with UI that uses an <em>Art Deco aesthetic</em>.</p>
+        <p class="ad-aside">Being able to implement UI elements in engine is always a plus!</p>
+        <div class="ad-row" style="width:990px;">
+          <div class="ad-plate media" style="--ar:0.827;" data-media="assets/ui-mock-hud"   data-mode="still" data-need="UI mockup &mdash; HUD"></div>
+          <div class="ad-plate media" style="--ar:1.719;" data-media="assets/ui-mock-board" data-mode="still" data-need="UI mockup &mdash; board"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 21 · UI ART ROLES — REFERENCES ===== -->
+  <div class="slide" id="slide-21" data-slide="21">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb blue" style="width:560px;height:560px;top:20%;left:16%;animation:calmPulse 6s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:440px;height:440px;bottom:14%;right:24%;animation:calmPulse 8s ease-in-out infinite 1s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="10"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">UI Art Roles</h2>
+      <div class="ad-body">
+        <div class="ad-split" style="gap:40px;">
+          <div class="ad-card ad-pad" style="width:300px;">
+            <ul class="ad-list">
+              <li>2D UI Artist</li>
+            </ul>
+          </div>
+          <div class="ad-refs" style="width:900px;">
+            <div class="ad-ref">
+              <span class="ad-label">Minimal</span>
+              <div class="ad-row" style="--gap:12px;">
+                <div class="ad-plate media" style="--ar:1.777;" data-media="assets/uiref-minimal-1" data-mode="still" data-need="Minimal &mdash; reference 1"></div>
+                <div class="ad-plate media" style="--ar:1.597;" data-media="assets/uiref-minimal-2" data-mode="still" data-need="Minimal &mdash; reference 2"></div>
+                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-minimal-3" data-mode="still" data-need="Minimal &mdash; reference 3"></div>
+                <div class="ad-plate media" style="--ar:1.004;" data-media="assets/uiref-minimal-4" data-mode="still" data-need="Minimal &mdash; reference 4"></div>
+              </div>
+            </div>
+            <div class="ad-ref">
+              <span class="ad-label">Crown Gambit</span>
+              <div class="ad-row" style="--gap:12px;">
+                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-crown-1" data-mode="still" data-need="Crown Gambit &mdash; reference 1"></div>
+                <div class="ad-plate media" style="--ar:1.777;" data-media="assets/uiref-crown-2" data-mode="still" data-need="Crown Gambit &mdash; reference 2"></div>
+                <div class="ad-plate media" style="--ar:1.773;" data-media="assets/uiref-crown-3" data-mode="still" data-need="Crown Gambit &mdash; reference 3"></div>
+              </div>
+            </div>
+            <div class="ad-ref">
+              <span class="ad-label">Sultan&rsquo;s Game</span>
+              <div class="ad-row" style="--gap:12px;">
+                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-1" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 1"></div>
+                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-2" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 2"></div>
+                <div class="ad-plate media" style="--ar:1.162;" data-media="assets/uiref-sultan-3" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 3"></div>
+                <div class="ad-plate media" style="--ar:1.500;" data-media="assets/uiref-sultan-4" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 22 · ART CLOSING ===== -->
+  <div class="slide" id="slide-22" data-slide="22">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb gold" style="width:600px;height:600px;top:20%;left:28%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb blue" style="width:460px;height:460px;bottom:12%;right:22%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="22"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Closing</h2>
+      <div class="ad-body">
+        <div>
+          <p class="narrative-text small">If you are an artist who did not see their particular role,</p>
+          <p class="narrative-text"><span class="leap">Let us know!</span></p>
+          <p class="narrative-text small">We are looking for anyone interested in bringing Final Spark to life!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 23 · CLOSE ===== -->
+  <div class="slide" id="slide-23" data-slide="23">
     <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb blue" style="width:600px;height:600px;top:15%;left:30%;animation:calmPulse 5s ease-in-out infinite;"></div>
@@ -1931,7 +2515,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
     counter.textContent = current + ' / ' + TOTAL;
     bar.style.width = ((current / TOTAL) * 100) + '%';
     canvas.style.opacity = to.getAttribute('data-mood') === 'cold' ? '0.06' : '1';
-    setDensity(n === 8 || n === 9);
+    setDensity(n === 7 || n === 8);
     cornerQr.style.display = (n === TOTAL) ? 'none' : '';
     ensureSlideMedia(n + 1);
     ensureSlideMedia(n - 1);

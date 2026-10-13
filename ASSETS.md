@@ -2,8 +2,12 @@
 
 Live at **https://jackwdharris.github.io/FinalSparkPitch/**
 
-11 slides. Trimmed from the recruitment deck by cutting its slides 2–13
+23 slides. Trimmed from the recruitment deck by cutting its slides 2–13
 (the personal history: playtime, the 2D demo, Guildrun, the 3D prototype).
+Slides 9–22 are the art-recruitment deck (Fall recruitment 2026), restyled to
+match. Dropped from it: the title slide, "What is Final Spark?" (restates slide
+8), the hidden "3D Art" slide, the thank-you slide, and the QR on its closing
+slide.
 
 | Key | Action |
 | --- | --- |
@@ -12,7 +16,7 @@ Live at **https://jackwdharris.github.io/FinalSparkPitch/**
 | `Home` / `End` | First / last slide |
 | `F` | Fullscreen |
 
-Click-through reveals: **3** The Patterns (3), **8** The World (4, enters empty), **9** (1).
+Click-through reveals: **3** The Patterns (3), **7** The World (4, enters empty), **8** (1).
 
 ## Slides
 
@@ -21,12 +25,24 @@ Click-through reveals: **3** The Patterns (3), **8** The World (4, enters empty)
 3. The Patterns
 4. Plays Like
 5. But It Feels Like
-6. What If It Looked Like This?
-7. Secrets inside an autobattler
-8. The World — four beats
-9. Final Spark is… — second sentence on a click
-10. The Team We're Building
-11. Close — QR
+6. Secrets inside an autobattler
+7. The World — four beats
+8. Final Spark is… — second sentence on a click
+9. Style Overview — who we're looking for
+10. Style Overview — key details
+11. Style Overview — inspirations (Ori, Hades, League of Legends)
+12. 3D Art Roles
+13. What We Already Have — Anubis 3D
+14. What We Already Have — 3D props
+15. 2D Art
+16. 2D Art Roles — concept / portrait / landscape
+17. What We Already Have — 2D
+18. Tech Art
+19. Tech Art Roles
+20. UI Art Roles — Art Deco
+21. UI Art Roles — references (Minimal, Crown Gambit, Sultan's Game)
+22. Closing — didn't see your role? Let us know!
+23. Close — QR
 
 ## Assets
 
