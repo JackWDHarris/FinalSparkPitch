@@ -1383,9 +1383,11 @@ b, strong { color: var(--gold-light); font-weight:700; }
 
 /* ============================================
    ART SECTION  (slides 9-22, from the art-recruitment deck)
+   Prefix is as- (art section). Never ad-: ad blockers hide
+   .ad-body, .ad-card, .ad-row and friends on sight.
    ============================================ */
 /* Everything under a section title sits centred in the space left below it. */
-.ad-body {
+.as-body {
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
@@ -1397,14 +1399,14 @@ b, strong { color: var(--gold-light); font-weight:700; }
   padding-bottom: 20px;
 }
 
-.ad-split {
+.as-split {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 60px;
 }
 
-.ad-stack {
+.as-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1412,8 +1414,8 @@ b, strong { color: var(--gold-light); font-weight:700; }
 }
 
 /* One framed piece of art. Single plates are sized in px from the art's own
-   aspect ratio; plates inside an .ad-row size themselves (below). */
-.ad-plate {
+   aspect ratio; plates inside an .as-row size themselves (below). */
+.as-plate {
   flex: 0 0 auto;
   border-radius: 12px;
   overflow: hidden;
@@ -1422,7 +1424,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   background: rgba(4,8,16,0.45);
   line-height: 0;
 }
-.ad-plate.gold {
+.as-plate.gold {
   border-color: rgba(245,158,11,0.32);
   box-shadow: 0 0 42px rgba(245,158,11,0.16), 0 18px 42px rgba(0,0,0,0.6);
 }
@@ -1430,19 +1432,19 @@ b, strong { color: var(--gold-light); font-weight:700; }
 /* A justified row: each plate grows in proportion to its aspect ratio (--ar),
    so every plate in the row lands at the same height and none is cropped.
    Set the row's width and the height follows. */
-.ad-row {
+.as-row {
   display: flex;
   align-items: flex-start;
   gap: var(--gap, 24px);
 }
-.ad-row > .ad-plate {
+.as-row > .as-plate {
   flex: var(--ar) 1 0px;
   min-width: 0;
   aspect-ratio: var(--ar);
 }
 
 /* ---------- type ---------- */
-.ad-copy {
+.as-copy {
   font-family: 'Cinzel', serif;
   font-size: 36px;
   font-weight: 600;
@@ -1452,17 +1454,17 @@ b, strong { color: var(--gold-light); font-weight:700; }
   text-shadow: 0 0 40px rgba(59,130,246,0.2);
   text-wrap: pretty;
 }
-.ad-copy.center { text-align: center; text-wrap: balance; }
-.ad-copy + .ad-copy { margin-top: 26px; }
-.ad-copy em,
-.ad-duty em {
+.as-copy.center { text-align: center; text-wrap: balance; }
+.as-copy + .as-copy { margin-top: 26px; }
+.as-copy em,
+.as-duty em {
   font-style: normal;
   font-weight: 700;
   background: linear-gradient(135deg, var(--blue-bright), var(--gold));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-.ad-lead {
+.as-lead {
   font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 500;
@@ -1471,7 +1473,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   color: var(--text-secondary);
 }
 
-.ad-aside {
+.as-aside {
   font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 300;
@@ -1481,7 +1483,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   margin-top: -10px;
 }
 
-.ad-label {
+.as-label {
   font-family: 'Cinzel', serif;
   font-size: 20px;
   font-weight: 600;
@@ -1490,7 +1492,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
 }
 
 /* ---------- cards (same language as the role cards) ---------- */
-.ad-card {
+.as-card {
   position: relative;
   overflow: hidden;
   background: var(--bg-card);
@@ -1498,7 +1500,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   border-radius: 14px;
   backdrop-filter: blur(10px);
 }
-.ad-card::before {
+.as-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
@@ -1506,17 +1508,17 @@ b, strong { color: var(--gold-light); font-weight:700; }
   background: linear-gradient(90deg, transparent, var(--blue-electric), var(--gold), transparent);
   opacity: 0.6;
 }
-.ad-card.ad-pad { padding: 34px 40px; }
-.ad-card .ad-lead { margin-bottom: 22px; }
+.as-card.as-pad { padding: 34px 40px; }
+.as-card .as-lead { margin-bottom: 22px; }
 
-.ad-list {
+.as-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 18px;
   padding: 0; margin: 0;
 }
-.ad-list li {
+.as-list li {
   font-family: 'Inter', sans-serif;
   font-size: 28px;
   font-weight: 400;
@@ -1525,14 +1527,14 @@ b, strong { color: var(--gold-light); font-weight:700; }
   padding-left: 38px;
   position: relative;
 }
-.ad-list li::before {
+.as-list li::before {
   content: '\26A1';
   position: absolute;
   left: 0; top: 4px;
   color: var(--gold);
   font-size: 0.72em;
 }
-.ad-note {
+.as-note {
   display: block;
   margin-top: 2px;
   font-size: 0.72em;
@@ -1541,19 +1543,19 @@ b, strong { color: var(--gold-light); font-weight:700; }
 }
 
 /* ---------- 2D art duties ---------- */
-.ad-duties {
+.as-duties {
   display: grid;
   grid-template-columns: repeat(2, 580px);
   gap: 24px;
 }
-.ad-duty {
+.as-duty {
   display: flex;
   align-items: center;
   gap: 24px;
   min-height: 150px;
   padding: 26px 34px;
 }
-.ad-glyph {
+.as-glyph {
   flex: 0 0 auto;
   width: 58px; height: 58px;
   border-radius: 50%;
@@ -1564,7 +1566,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   border: 1px solid rgba(245,158,11,0.40);
   box-shadow: 0 0 22px rgba(245,158,11,0.18);
 }
-.ad-duty p {
+.as-duty p {
   font-family: 'Inter', sans-serif;
   font-size: 27px;
   font-weight: 400;
@@ -1573,19 +1575,19 @@ b, strong { color: var(--gold-light); font-weight:700; }
 }
 
 /* ---------- 2D art roles: one column card per role ---------- */
-.ad-cols {
+.as-cols {
   display: flex;
   align-items: stretch;
   justify-content: center;
   gap: 20px;
 }
-.ad-col {
+.as-col {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 16px 18px 20px;
 }
-.ad-col-head {
+.as-col-head {
   min-height: 66px;
   display: flex;
   flex-direction: column;
@@ -1602,7 +1604,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   background: linear-gradient(135deg, var(--blue-bright), var(--gold));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.ad-col-head .ad-note {
+.as-col-head .as-note {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -1610,7 +1612,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   text-transform: none;
   -webkit-text-fill-color: var(--text-muted);
 }
-.ad-col-art {
+.as-col-art {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -1618,15 +1620,15 @@ b, strong { color: var(--gold-light); font-weight:700; }
   justify-content: center;
   gap: 10px;
 }
-.ad-col-art > .ad-row { width: 100%; }
+.as-col-art > .as-row { width: 100%; }
 
 /* ---------- tech art roles ---------- */
-.ad-chips {
+.as-chips {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-.ad-chip {
+.as-chip {
   min-width: 300px;
   padding: 20px 30px;
   text-align: center;
@@ -1636,26 +1638,26 @@ b, strong { color: var(--gold-light); font-weight:700; }
   letter-spacing: 2px;
   color: var(--text-primary);
 }
-.ad-chip .ad-note { display: inline; font-family: 'Inter', sans-serif; font-size: 0.7em; letter-spacing: 1px; }
+.as-chip .as-note { display: inline; font-family: 'Inter', sans-serif; font-size: 0.7em; letter-spacing: 1px; }
 
-.ad-grid {
+.as-grid {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 /* ---------- UI references ---------- */
-.ad-refs {
+.as-refs {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
-.ad-ref {
+.as-ref {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.ad-refs .ad-plate { border-radius: 8px; }
+.as-refs .as-plate { border-radius: 8px; }
 
 /* ============================================
    RESPONSIVE
@@ -1941,13 +1943,13 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">Style Overview</h2>
-      <div class="ad-body">
-        <div class="ad-split">
+      <div class="as-body">
+        <div class="as-split">
           <div style="width:640px;">
-            <p class="ad-copy">We are looking for artists who love making grand, mythical, and moody art.</p>
-            <p class="ad-copy">If you love the idea of <em>gods</em> clashing over <em>fate</em> itself in a world plunged into <em>ruin</em> and chaos, then this project is for you!</p>
+            <p class="as-copy">We are looking for artists who love making grand, mythical, and moody art.</p>
+            <p class="as-copy">If you love the idea of <em>gods</em> clashing over <em>fate</em> itself in a world plunged into <em>ruin</em> and chaos, then this project is for you!</p>
           </div>
-          <div class="ad-plate gold media" style="width:462px;height:600px;" data-media="assets/style-1" data-mode="still" data-need="Style &mdash; key art"></div>
+          <div class="as-plate gold media" style="width:462px;height:600px;" data-media="assets/style-1" data-mode="still" data-need="Style &mdash; key art"></div>
         </div>
       </div>
     </div>
@@ -1963,11 +1965,11 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">Style Overview</h2>
-      <div class="ad-body">
-        <div class="ad-split">
-          <div class="ad-card ad-pad" style="width:660px;">
-            <p class="ad-lead">Key details about our art style:</p>
-            <ul class="ad-list">
+      <div class="as-body">
+        <div class="as-split">
+          <div class="as-card as-pad" style="width:660px;">
+            <p class="as-lead">Key details about our art style:</p>
+            <ul class="as-list">
               <li>Dark gloomy environments</li>
               <li>Characters with high contrast</li>
               <li>Details placed with intention</li>
@@ -1975,7 +1977,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
               <li>Exaggerated proportions</li>
             </ul>
           </div>
-          <div class="ad-plate gold media" style="width:380px;height:580px;" data-media="assets/style-morrigan" data-mode="still" data-need="Style &mdash; Morrigan concept"></div>
+          <div class="as-plate gold media" style="width:380px;height:580px;" data-media="assets/style-morrigan" data-mode="still" data-need="Style &mdash; Morrigan concept"></div>
         </div>
       </div>
     </div>
@@ -1991,12 +1993,12 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">Style Overview</h2>
-      <div class="ad-body">
-        <p class="ad-copy center">Our inspirations are the Ori games, Hades, and League of Legends</p>
-        <div class="ad-row" style="width:1250px;--gap:28px;">
-          <div class="ad-plate media" style="--ar:0.897;" data-media="assets/insp-ori"    data-mode="still" data-need="Inspiration &mdash; Ori"><span class="ct-label">Ori</span></div>
-          <div class="ad-plate media" style="--ar:0.899;" data-media="assets/insp-hades"  data-mode="still" data-need="Inspiration &mdash; Hades"><span class="ct-label">Hades</span></div>
-          <div class="ad-plate media" style="--ar:0.886;" data-media="assets/insp-league" data-mode="still" data-need="Inspiration &mdash; League of Legends"><span class="ct-label">League of Legends</span></div>
+      <div class="as-body">
+        <p class="as-copy center">Our inspirations are the Ori games, Hades, and League of Legends</p>
+        <div class="as-row" style="width:1250px;--gap:28px;">
+          <div class="as-plate media" style="--ar:0.897;" data-media="assets/insp-ori"    data-mode="still" data-need="Inspiration &mdash; Ori"><span class="ct-label">Ori</span></div>
+          <div class="as-plate media" style="--ar:0.899;" data-media="assets/insp-hades"  data-mode="still" data-need="Inspiration &mdash; Hades"><span class="ct-label">Hades</span></div>
+          <div class="as-plate media" style="--ar:0.886;" data-media="assets/insp-league" data-mode="still" data-need="Inspiration &mdash; League of Legends"><span class="ct-label">League of Legends</span></div>
         </div>
       </div>
     </div>
@@ -2012,20 +2014,20 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">3D Art Roles</h2>
-      <div class="ad-body">
-        <div class="ad-split" style="gap:40px;">
-          <div class="ad-card ad-pad" style="width:420px;">
-            <ul class="ad-list">
+      <div class="as-body">
+        <div class="as-split" style="gap:40px;">
+          <div class="as-card as-pad" style="width:420px;">
+            <ul class="as-list">
               <li>Character Modeler</li>
               <li>Creature Modeler</li>
               <li>Prop Artist</li>
               <li>Environmental Artist</li>
-              <li>Animator/Rigger <span class="ad-note">(Human/Creature)</span></li>
+              <li>Animator/Rigger <span class="as-note">(Human/Creature)</span></li>
             </ul>
           </div>
-          <div class="ad-stack" style="width:800px;">
-            <div class="ad-plate media" style="width:800px;height:265px;" data-media="assets/art3d-lineup"   data-mode="still" data-need="3D &mdash; character lineup"></div>
-            <div class="ad-plate media" style="width:429px;height:300px;" data-media="assets/art3d-creature" data-mode="still" data-need="3D &mdash; creature concept"></div>
+          <div class="as-stack" style="width:800px;">
+            <div class="as-plate media" style="width:800px;height:265px;" data-media="assets/art3d-lineup"   data-mode="still" data-need="3D &mdash; character lineup"></div>
+            <div class="as-plate media" style="width:429px;height:300px;" data-media="assets/art3d-creature" data-mode="still" data-need="3D &mdash; creature concept"></div>
           </div>
         </div>
       </div>
@@ -2042,8 +2044,8 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="16"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">What We Already Have</h2>
-      <div class="ad-body">
-        <div class="ad-plate gold media" style="width:1130px;height:636px;" data-media="assets/have-anubis-3d" data-mode="still" data-need="Anubis &mdash; 3D character sheet"></div>
+      <div class="as-body">
+        <div class="as-plate gold media" style="width:1130px;height:636px;" data-media="assets/have-anubis-3d" data-mode="still" data-need="Anubis &mdash; 3D character sheet"></div>
       </div>
     </div>
   </div>
@@ -2058,11 +2060,11 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">What We Already Have</h2>
-      <div class="ad-body">
-        <div class="ad-row" style="width:1240px;">
-          <div class="ad-plate media" style="--ar:1.286;" data-media="assets/have-prop-1" data-mode="still" data-need="3D prop 1"></div>
-          <div class="ad-plate media" style="--ar:0.775;" data-media="assets/have-prop-2" data-mode="still" data-need="3D prop 2"></div>
-          <div class="ad-plate media" style="--ar:1.009;" data-media="assets/have-prop-3" data-mode="still" data-need="3D prop 3"></div>
+      <div class="as-body">
+        <div class="as-row" style="width:1240px;">
+          <div class="as-plate media" style="--ar:1.286;" data-media="assets/have-prop-1" data-mode="still" data-need="3D prop 1"></div>
+          <div class="as-plate media" style="--ar:0.775;" data-media="assets/have-prop-2" data-mode="still" data-need="3D prop 2"></div>
+          <div class="as-plate media" style="--ar:1.009;" data-media="assets/have-prop-3" data-mode="still" data-need="3D prop 3"></div>
         </div>
       </div>
     </div>
@@ -2078,13 +2080,13 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">2D Art</h2>
-      <div class="ad-body">
-        <p class="ad-lead">2D artists will be expected to:</p>
-        <div class="ad-duties">
-          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Concept characters <em>AND</em> environments</p></div>
-          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Make turnaround character sheets for our 3D artists</p></div>
-          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Draw items and relics</p></div>
-          <div class="ad-card ad-duty"><span class="ad-glyph">&#10070;</span><p>Create 2D backgrounds for our environments</p></div>
+      <div class="as-body">
+        <p class="as-lead">2D artists will be expected to:</p>
+        <div class="as-duties">
+          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Concept characters <em>AND</em> environments</p></div>
+          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Make turnaround character sheets for our 3D artists</p></div>
+          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Draw items and relics</p></div>
+          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Create 2D backgrounds for our environments</p></div>
         </div>
       </div>
     </div>
@@ -2100,42 +2102,42 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="10"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">2D Art Roles</h2>
-      <div class="ad-body">
-        <div class="ad-cols">
-          <div class="ad-card ad-col" style="width:440px;">
-            <div class="ad-col-head">Concept Artists<span class="ad-note">(Human/Creature)</span></div>
-            <div class="ad-col-art">
-              <div class="ad-row" style="--gap:10px;">
-                <div class="ad-plate media" style="--ar:2.020;" data-media="assets/art2d-concept-1" data-mode="still" data-need="Concept reference 1"></div>
-                <div class="ad-plate media" style="--ar:1.283;" data-media="assets/art2d-concept-2" data-mode="still" data-need="Concept reference 2"></div>
+      <div class="as-body">
+        <div class="as-cols">
+          <div class="as-card as-col" style="width:440px;">
+            <div class="as-col-head">Concept Artists<span class="as-note">(Human/Creature)</span></div>
+            <div class="as-col-art">
+              <div class="as-row" style="--gap:10px;">
+                <div class="as-plate media" style="--ar:2.020;" data-media="assets/art2d-concept-1" data-mode="still" data-need="Concept reference 1"></div>
+                <div class="as-plate media" style="--ar:1.283;" data-media="assets/art2d-concept-2" data-mode="still" data-need="Concept reference 2"></div>
               </div>
-              <div class="ad-row" style="--gap:10px;">
-                <div class="ad-plate media" style="--ar:1.784;" data-media="assets/art2d-concept-3" data-mode="still" data-need="Concept reference 3"></div>
-                <div class="ad-plate media" style="--ar:1.373;" data-media="assets/art2d-concept-4" data-mode="still" data-need="Concept reference 4"></div>
+              <div class="as-row" style="--gap:10px;">
+                <div class="as-plate media" style="--ar:1.784;" data-media="assets/art2d-concept-3" data-mode="still" data-need="Concept reference 3"></div>
+                <div class="as-plate media" style="--ar:1.373;" data-media="assets/art2d-concept-4" data-mode="still" data-need="Concept reference 4"></div>
               </div>
-              <div class="ad-plate media" style="width:260px;height:174px;" data-media="assets/art2d-concept-5" data-mode="still" data-need="Concept reference 5"></div>
+              <div class="as-plate media" style="width:260px;height:174px;" data-media="assets/art2d-concept-5" data-mode="still" data-need="Concept reference 5"></div>
             </div>
           </div>
 
-          <div class="ad-card ad-col" style="width:340px;">
-            <div class="ad-col-head">Portrait Artists</div>
-            <div class="ad-col-art">
-              <div class="ad-plate media" style="width:304px;height:266px;" data-media="assets/art2d-portrait" data-mode="still" data-need="Portrait reference"></div>
+          <div class="as-card as-col" style="width:340px;">
+            <div class="as-col-head">Portrait Artists</div>
+            <div class="as-col-art">
+              <div class="as-plate media" style="width:304px;height:266px;" data-media="assets/art2d-portrait" data-mode="still" data-need="Portrait reference"></div>
             </div>
           </div>
 
-          <div class="ad-card ad-col" style="width:440px;">
-            <div class="ad-col-head">Landscape Artists</div>
-            <div class="ad-col-art">
-              <div class="ad-row" style="--gap:10px;">
-                <div class="ad-plate media" style="--ar:1.786;" data-media="assets/art2d-landscape-1" data-mode="still" data-need="Landscape reference 1"></div>
-                <div class="ad-plate media" style="--ar:1.341;" data-media="assets/art2d-landscape-2" data-mode="still" data-need="Landscape reference 2"></div>
+          <div class="as-card as-col" style="width:440px;">
+            <div class="as-col-head">Landscape Artists</div>
+            <div class="as-col-art">
+              <div class="as-row" style="--gap:10px;">
+                <div class="as-plate media" style="--ar:1.786;" data-media="assets/art2d-landscape-1" data-mode="still" data-need="Landscape reference 1"></div>
+                <div class="as-plate media" style="--ar:1.341;" data-media="assets/art2d-landscape-2" data-mode="still" data-need="Landscape reference 2"></div>
               </div>
-              <div class="ad-row" style="--gap:10px;">
-                <div class="ad-plate media" style="--ar:0.926;" data-media="assets/art2d-landscape-3" data-mode="still" data-need="Landscape reference 3"></div>
-                <div class="ad-plate media" style="--ar:1.791;" data-media="assets/art2d-landscape-4" data-mode="still" data-need="Landscape reference 4"></div>
+              <div class="as-row" style="--gap:10px;">
+                <div class="as-plate media" style="--ar:0.926;" data-media="assets/art2d-landscape-3" data-mode="still" data-need="Landscape reference 3"></div>
+                <div class="as-plate media" style="--ar:1.791;" data-media="assets/art2d-landscape-4" data-mode="still" data-need="Landscape reference 4"></div>
               </div>
-              <div class="ad-plate media" style="width:260px;height:184px;" data-media="assets/art2d-landscape-5" data-mode="still" data-need="Final Spark environment sketch"></div>
+              <div class="as-plate media" style="width:260px;height:184px;" data-media="assets/art2d-landscape-5" data-mode="still" data-need="Final Spark environment sketch"></div>
             </div>
           </div>
         </div>
@@ -2153,16 +2155,16 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">What We Already Have</h2>
-      <div class="ad-body">
-        <div class="ad-split" style="gap:24px;">
-          <div class="ad-stack" style="gap:20px;">
-            <div class="ad-split" style="gap:20px;">
-              <div class="ad-plate media" style="width:406px;height:320px;" data-media="assets/have-morrigan-turnaround" data-mode="still" data-need="Morrigan &mdash; turnaround"></div>
-              <div class="ad-plate media" style="width:388px;height:320px;" data-media="assets/have-anubis-sketches"     data-mode="still" data-need="Anubis &mdash; sketches"></div>
+      <div class="as-body">
+        <div class="as-split" style="gap:24px;">
+          <div class="as-stack" style="gap:20px;">
+            <div class="as-split" style="gap:20px;">
+              <div class="as-plate media" style="width:406px;height:320px;" data-media="assets/have-morrigan-turnaround" data-mode="still" data-need="Morrigan &mdash; turnaround"></div>
+              <div class="as-plate media" style="width:388px;height:320px;" data-media="assets/have-anubis-sketches"     data-mode="still" data-need="Anubis &mdash; sketches"></div>
             </div>
-            <div class="ad-plate media" style="width:814px;height:270px;" data-media="assets/art3d-lineup" data-mode="still" data-need="Character lineup"></div>
+            <div class="as-plate media" style="width:814px;height:270px;" data-media="assets/art3d-lineup" data-mode="still" data-need="Character lineup"></div>
           </div>
-          <div class="ad-plate gold media" style="width:422px;height:610px;" data-media="assets/have-anubis-painting" data-mode="still" data-need="Anubis &mdash; painted concept"></div>
+          <div class="as-plate gold media" style="width:422px;height:610px;" data-media="assets/have-anubis-painting" data-mode="still" data-need="Anubis &mdash; painted concept"></div>
         </div>
       </div>
     </div>
@@ -2178,7 +2180,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="18"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">Tech Art</h2>
-      <div class="ad-body">
+      <div class="as-body">
         <p class="narrative-text mid">
           Tech artists on this project will be doing mostly 2D and 3D <em>VFX</em> work,
           with an expertise in writing <em>shaders</em> and/or <em>lighting</em> scenes
@@ -2198,20 +2200,20 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">Tech Art Roles</h2>
-      <div class="ad-body" style="gap:28px;">
-        <div class="ad-chips">
-          <div class="ad-card ad-chip">Shader Artist / Programmer</div>
-          <div class="ad-card ad-chip">Lighting Artist</div>
-          <div class="ad-card ad-chip">VFX Artist <span class="ad-note">(2D/3D)</span></div>
+      <div class="as-body" style="gap:28px;">
+        <div class="as-chips">
+          <div class="as-card as-chip">Shader Artist / Programmer</div>
+          <div class="as-card as-chip">Lighting Artist</div>
+          <div class="as-card as-chip">VFX Artist <span class="as-note">(2D/3D)</span></div>
         </div>
-        <div class="ad-grid" style="width:1000px;">
-          <div class="ad-row" style="--gap:16px;">
-            <div class="ad-plate media" style="--ar:1.782;" data-media="assets/techart-ref-1" data-mode="still" data-need="Tech art reference 1"></div>
-            <div class="ad-plate media" style="--ar:1.780;" data-media="assets/techart-ref-2" data-mode="still" data-need="Tech art reference 2"></div>
+        <div class="as-grid" style="width:1000px;">
+          <div class="as-row" style="--gap:16px;">
+            <div class="as-plate media" style="--ar:1.782;" data-media="assets/techart-ref-1" data-mode="still" data-need="Tech art reference 1"></div>
+            <div class="as-plate media" style="--ar:1.780;" data-media="assets/techart-ref-2" data-mode="still" data-need="Tech art reference 2"></div>
           </div>
-          <div class="ad-row" style="--gap:16px;">
-            <div class="ad-plate media" style="--ar:2.255;" data-media="assets/techart-ref-3" data-mode="still" data-need="Tech art reference 3"></div>
-            <div class="ad-plate media" style="--ar:2.474;" data-media="assets/techart-ref-4" data-mode="still" data-need="Tech art reference 4"></div>
+          <div class="as-row" style="--gap:16px;">
+            <div class="as-plate media" style="--ar:2.255;" data-media="assets/techart-ref-3" data-mode="still" data-need="Tech art reference 3"></div>
+            <div class="as-plate media" style="--ar:2.474;" data-media="assets/techart-ref-4" data-mode="still" data-need="Tech art reference 4"></div>
           </div>
         </div>
       </div>
@@ -2228,12 +2230,12 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">UI Art Roles</h2>
-      <div class="ad-body">
-        <p class="ad-copy center" style="max-width:1200px;">We are interested in someone who can capture the look of our fallen world with UI that uses an <em>Art Deco aesthetic</em>.</p>
-        <p class="ad-aside">Being able to implement UI elements in engine is always a plus!</p>
-        <div class="ad-row" style="width:990px;">
-          <div class="ad-plate media" style="--ar:0.827;" data-media="assets/ui-mock-hud"   data-mode="still" data-need="UI mockup &mdash; HUD"></div>
-          <div class="ad-plate media" style="--ar:1.719;" data-media="assets/ui-mock-board" data-mode="still" data-need="UI mockup &mdash; board"></div>
+      <div class="as-body">
+        <p class="as-copy center" style="max-width:1200px;">We are interested in someone who can capture the look of our fallen world with UI that uses an <em>Art Deco aesthetic</em>.</p>
+        <p class="as-aside">Being able to implement UI elements in engine is always a plus!</p>
+        <div class="as-row" style="width:990px;">
+          <div class="as-plate media" style="--ar:0.827;" data-media="assets/ui-mock-hud"   data-mode="still" data-need="UI mockup &mdash; HUD"></div>
+          <div class="as-plate media" style="--ar:1.719;" data-media="assets/ui-mock-board" data-mode="still" data-need="UI mockup &mdash; board"></div>
         </div>
       </div>
     </div>
@@ -2249,38 +2251,38 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="10"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">UI Art Roles</h2>
-      <div class="ad-body">
-        <div class="ad-split" style="gap:40px;">
-          <div class="ad-card ad-pad" style="width:300px;">
-            <ul class="ad-list">
+      <div class="as-body">
+        <div class="as-split" style="gap:40px;">
+          <div class="as-card as-pad" style="width:300px;">
+            <ul class="as-list">
               <li>2D UI Artist</li>
             </ul>
           </div>
-          <div class="ad-refs" style="width:900px;">
-            <div class="ad-ref">
-              <span class="ad-label">Minimal</span>
-              <div class="ad-row" style="--gap:12px;">
-                <div class="ad-plate media" style="--ar:1.777;" data-media="assets/uiref-minimal-1" data-mode="still" data-need="Minimal &mdash; reference 1"></div>
-                <div class="ad-plate media" style="--ar:1.597;" data-media="assets/uiref-minimal-2" data-mode="still" data-need="Minimal &mdash; reference 2"></div>
-                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-minimal-3" data-mode="still" data-need="Minimal &mdash; reference 3"></div>
-                <div class="ad-plate media" style="--ar:1.004;" data-media="assets/uiref-minimal-4" data-mode="still" data-need="Minimal &mdash; reference 4"></div>
+          <div class="as-refs" style="width:900px;">
+            <div class="as-ref">
+              <span class="as-label">Minimal</span>
+              <div class="as-row" style="--gap:12px;">
+                <div class="as-plate media" style="--ar:1.777;" data-media="assets/uiref-minimal-1" data-mode="still" data-need="Minimal &mdash; reference 1"></div>
+                <div class="as-plate media" style="--ar:1.597;" data-media="assets/uiref-minimal-2" data-mode="still" data-need="Minimal &mdash; reference 2"></div>
+                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-minimal-3" data-mode="still" data-need="Minimal &mdash; reference 3"></div>
+                <div class="as-plate media" style="--ar:1.004;" data-media="assets/uiref-minimal-4" data-mode="still" data-need="Minimal &mdash; reference 4"></div>
               </div>
             </div>
-            <div class="ad-ref">
-              <span class="ad-label">Crown Gambit</span>
-              <div class="ad-row" style="--gap:12px;">
-                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-crown-1" data-mode="still" data-need="Crown Gambit &mdash; reference 1"></div>
-                <div class="ad-plate media" style="--ar:1.777;" data-media="assets/uiref-crown-2" data-mode="still" data-need="Crown Gambit &mdash; reference 2"></div>
-                <div class="ad-plate media" style="--ar:1.773;" data-media="assets/uiref-crown-3" data-mode="still" data-need="Crown Gambit &mdash; reference 3"></div>
+            <div class="as-ref">
+              <span class="as-label">Crown Gambit</span>
+              <div class="as-row" style="--gap:12px;">
+                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-crown-1" data-mode="still" data-need="Crown Gambit &mdash; reference 1"></div>
+                <div class="as-plate media" style="--ar:1.777;" data-media="assets/uiref-crown-2" data-mode="still" data-need="Crown Gambit &mdash; reference 2"></div>
+                <div class="as-plate media" style="--ar:1.773;" data-media="assets/uiref-crown-3" data-mode="still" data-need="Crown Gambit &mdash; reference 3"></div>
               </div>
             </div>
-            <div class="ad-ref">
-              <span class="ad-label">Sultan&rsquo;s Game</span>
-              <div class="ad-row" style="--gap:12px;">
-                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-1" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 1"></div>
-                <div class="ad-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-2" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 2"></div>
-                <div class="ad-plate media" style="--ar:1.162;" data-media="assets/uiref-sultan-3" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 3"></div>
-                <div class="ad-plate media" style="--ar:1.500;" data-media="assets/uiref-sultan-4" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 4"></div>
+            <div class="as-ref">
+              <span class="as-label">Sultan&rsquo;s Game</span>
+              <div class="as-row" style="--gap:12px;">
+                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-1" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 1"></div>
+                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-2" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 2"></div>
+                <div class="as-plate media" style="--ar:1.162;" data-media="assets/uiref-sultan-3" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 3"></div>
+                <div class="as-plate media" style="--ar:1.500;" data-media="assets/uiref-sultan-4" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 4"></div>
               </div>
             </div>
           </div>
@@ -2299,7 +2301,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="22"></div>
     <div class="slide-inner top-aligned">
       <h2 class="section-title">Closing</h2>
-      <div class="ad-body">
+      <div class="as-body">
         <div>
           <p class="narrative-text small">If you are an artist who did not see their particular role,</p>
           <p class="narrative-text"><span class="leap">Let us know!</span></p>
