@@ -2,12 +2,9 @@
 
 Live at **https://jackwdharris.github.io/FinalSparkPitch/**
 
-23 slides. Trimmed from the recruitment deck by cutting its slides 2–13
-(the personal history: playtime, the 2D demo, Guildrun, the 3D prototype).
-Slides 9–22 are the art-recruitment deck (Fall recruitment 2026), restyled to
-match. Dropped from it: the title slide, "What is Final Spark?" (restates slide
-8), the hidden "3D Art" slide, the thank-you slide, and the QR on its closing
-slide.
+21 slides, restructured Nov 2026 from Dean's notes: slides 1-6 unchanged, then
+the pitch (7-8), a Game Design section (9-13), an Art section (14-20) and a
+closing roles slide with the big QR (21).
 
 | Key | Action |
 | --- | --- |
@@ -16,7 +13,8 @@ slide.
 | `Home` / `End` | First / last slide |
 | `F` | Fullscreen |
 
-Click-through reveals: **3** The Patterns (3), **7** The World (4, enters empty), **8** (1).
+Click-through reveals: **3** The Patterns (3), **7** What is it? (1 — the
+closing sentence), **8** Narrative Overview (4, enters empty).
 
 ## Slides
 
@@ -26,23 +24,41 @@ Click-through reveals: **3** The Patterns (3), **7** The World (4, enters empty)
 4. Plays Like
 5. But It Feels Like
 6. Secrets inside an autobattler
-7. The World — four beats
-8. Final Spark is… — second sentence on a click
-9. Style Overview — who we're looking for
-10. Style Overview — key details
-11. Style Overview — inspirations (Ori, Hades, League of Legends)
-12. 3D Art Roles
-13. What We Already Have — Anubis 3D
-14. What We Already Have — 3D props
-15. 2D Art
-16. 2D Art Roles — concept / portrait / landscape
-17. What We Already Have — 2D
-18. Tech Art
-19. Tech Art Roles
-20. UI Art Roles — Art Deco
-21. UI Art Roles — references (Minimal, Crown Gambit, Sultan's Game)
-22. Closing — didn't see your role? Let us know!
-23. Close — QR
+7. What is it? — pitch copy + Anubis / Itzpapalotl / Morrigan portraits
+8. Narrative Overview — the four story beats
+9. Gameplay Overview — Guildrun + Blue Prince
+10. Auto-Battler — two points + TFT board / augments
+11. Auto-Battler — two Unity demo clips
+12. Secrets and Puzzles — two points + Animal Well / Blue Prince references
+13. Secrets and Puzzles — two design-concept images
+14. Visual Pillars — five pillars + the three god portraits
+15. Character Concept Art — four pieces in two size-matched pairs
+16. Environment Concept — sky islands + night island
+17. Target Fidelity — Stylized Realism — four 3D model sheets, 2 x 2
+18. Environment Models — island painting + five models, two justified rows
+19. VFX and Tech Art — Status VFX / Attack VFX clips
+20. UI Art — Art Deco copy + class card / god-select UI
+21. Open Roles — role cards + big QR
+
+## New asset slots (Nov 2026)
+
+Until a file exists the slot shows a labelled placeholder with its path.
+
+| Slide | Basename(s) in `assets/` |
+| --- | --- |
+| 7, 14 | `god-anubis`, `god-itzpapalotl`, `god-morrigan` |
+| 9 | `gameplay-guildrun`, `gameplay-blueprince` |
+| 10 | `autobattler-tft-board`, `autobattler-tft-augments` |
+| 11 | `demo-autobattler-1`, `demo-autobattler-2` (clips) |
+| 12 | `secrets-animalwell`, `secrets-blueprince` |
+| 13 | `secrets-concept-1`, `secrets-concept-2` |
+| 15 | `concept-character-1` … `concept-character-4` |
+| 16 | `concept-environment-1`, `concept-environment-2` |
+| 17 | `model-anubis`, `model-itzpapalotl`, `model-morrigan`, `model-ame` |
+| 18 | `env-model-1` … `env-model-6` |
+| 19 | `vfx-status` (heal clip), `vfx-attack` (clips) — cropped to the Unity game view |
+| 20 | `ui-art-1`, `ui-art-2` |
+| 21 + corner | `qr` |
 
 ## Assets
 

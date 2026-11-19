@@ -1289,6 +1289,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   background: linear-gradient(135deg, rgba(15,25,50,0.9), rgba(30,58,138,0.28));
   border:1px dashed rgba(245,158,11,0.35); border-radius:12px;
   font-family:'Inter',sans-serif;
+  line-height:1.3;   /* plates set line-height:0, which stacks these lines on top of each other */
 }
 .asset-missing .am-icon { font-size:26px; color: var(--gold); opacity:0.6; }
 .asset-missing .am-label {
@@ -1370,19 +1371,142 @@ b, strong { color: var(--gold-light); font-weight:700; }
   width: 100%; height: 100%; object-fit: cover; display: block;
 }
 
-/* Slide 21 carries the longest single block in the deck. */
-/* Four stacked beats cap the plate height, so buy room from the padding and
-   the row gap and spend all of it on the images. */
-#slide-7.slide { padding-top: 22px; padding-bottom: 56px; }
+/* Narrative Overview: four stacked beats plus a title cap the plate height,
+   so buy room from the padding, the title and the row gap and spend all of
+   it on the images. */
+.slide.story-slide { padding-top: 22px; padding-bottom: 56px; }
+.story-slide .section-title { font-size: 44px; margin-bottom: 10px; }
+.story-slide .story-grid { gap: 6px; }
+.story-slide .story-row { grid-template-columns: 310px minmax(0, 1fr) 310px; }
+.story-slide .story-art .media,
+.story-slide .story-grid .story-art .media > img,
+.story-slide .story-grid .story-art .media > video { max-height: 168px; }
+.story-slide .story-text { font-size: 25px; }
 
-#slide-8 .narrative-text {
-  max-width: 1340px;
-  font-size: 34px;
-  line-height: 1.55;
+/* ============================================
+   WHAT IS IT? (7) + VISUAL PILLARS (14) - GOD PORTRAITS
+   ============================================ */
+.what-body { gap: 26px; }
+.narrative-text.what-text {
+  font-size: 25px;
+  line-height: 1.6;
+  max-width: 1300px;
+  letter-spacing: 0.5px;
+  text-wrap: balance;
+}
+
+.god-trio {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+}
+.god-trio.pillars { gap: 22px; }
+
+/* Portrait frames: fixed 4:5 so the three gods read as a matched set. The art
+   is anchored to the top so a crop costs feet, never heads. */
+.god-frame { width: 192px; height: 278px; }                    /* paintings are 0.69 */
+.god-trio.pillars .god-frame { width: 214px; height: 310px; }
+.god-frame > img { object-position: 50% 15%; }
+
+.god-cap {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-align: center;
 }
 
 /* ============================================
-   ART SECTION  (slides 9-22, from the art-recruitment deck)
+   GAME DESIGN + ART SECTIONS (9-21) - SHARED FRAMES
+   Content stays within 1300px so it never runs under the corner QR.
+   ============================================ */
+.as-fig {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Two 16:9 plates side by side (1300px with the 40px gap). */
+.duo-frame { width: 630px; height: 354px; }
+
+/* A justified row of captioned figures: each figure grows by its art's aspect
+   ratio (--ar, set on the figure), so every plate lands at the same height and
+   none is cropped. Plain plates in an .as-row work the same way (below). */
+.as-row > .as-fig { flex: var(--ar) 1 0px; min-width: 0; }
+.as-row > .as-fig > .as-plate { width: 100%; aspect-ratio: var(--ar); }
+
+/* 2 x 2 of the 16:9 model sheets on Target Fidelity. */
+.sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 576px);
+  grid-auto-rows: 324px;
+  gap: 20px;
+}
+
+/* Bulleted points above a pair of images. */
+.as-list.point-list {
+  max-width: 1300px;
+  gap: 12px;
+}
+.as-list.point-list li { font-size: 26px; }
+
+.fidelity-title { font-size: 52px; }
+
+.vfx-label { font-size: 24px; letter-spacing: 3px; text-transform: uppercase; }
+
+
+/* ============================================
+   OPEN ROLES (21)
+   ============================================ */
+.roles-board {
+  display: grid;
+  grid-template-columns: 430px 330px;
+  grid-auto-rows: auto;
+  gap: 16px;
+}
+.roles-board .roles-art { grid-row: span 2; }
+.roles-board .role-card { padding: 18px 24px; gap: 12px; justify-content: center; }
+.roles-board .role-card:hover { transform: none; }
+.roles-board .role-category { font-size: 26px; letter-spacing: 3px; padding-bottom: 10px; }
+.roles-board .role-list { gap: 10px; flex: 0 0 auto; }
+.roles-board .role-list li { font-size: 23px; padding-left: 28px; }
+.roles-board .role-list li::before { top: 3px; }
+.roles-board .role-card.solo .role-category { border-bottom: none; padding-bottom: 0; }
+
+.roles-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.final-qr.big { margin-top: 0; width: 380px; height: 380px; }
+
+.roles-note {
+  max-width: 1150px;
+  text-wrap: balance;
+  line-height: 1.5;
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--text-primary);
+  text-shadow: 0 0 34px rgba(59,130,246,0.2);
+}
+.roles-note em {
+  font-style: normal;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--blue-bright), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ============================================
+   ART SECTION  (as- components, used across slides 9-21)
    Prefix is as- (art section). Never ad-: ad blockers hide
    .ad-body, .ad-card, .ad-row and friends on sight.
    ============================================ */
@@ -1668,7 +1792,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
 </head>
 <body>
 
-<div id="progress-bar" style="width:4.3%;"></div>
+<div id="progress-bar" style="width:4.8%;"></div>
 <canvas id="global-particles"></canvas>
 
 <button class="nav-arrow left"  id="nav-left"  aria-label="Previous">&#10094;</button>
@@ -1678,7 +1802,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
   <div class="footer-left">
     <span class="spark">&#9889;</span> Final Spark &nbsp;|&nbsp; Pitch &nbsp;|&nbsp; Jack Desmarais-Harris &nbsp;|&nbsp; jdesmara@usc.edu
   </div>
-  <div class="slide-counter" id="slide-counter">1 / 23</div>
+  <div class="slide-counter" id="slide-counter">1 / 21</div>
 </div>
 
 <div id="hint">&larr; &rarr; navigate &nbsp;&middot;&nbsp; F fullscreen</div>
@@ -1855,8 +1979,49 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
   </div>
 
-  <!-- ===== 7 · THE WORLD ===== -->
+  <!-- ===== 7 · WHAT IS IT? ===== -->
   <div class="slide" id="slide-7" data-slide="7">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb gold" style="width:600px;height:600px;top:20%;left:30%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb blue" style="width:440px;height:440px;bottom:14%;right:22%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="26"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">What is it?</h2>
+      <div class="as-body what-body">
+        <p class="narrative-text what-text">
+          <span class="leap">Final Spark</span> is a <em>3D discovery-centric autobattler roguelike</em> with
+          <em>metroidvania elements</em> set in a world inspired by mythology and ancient pantheons.
+          You play as a <em>Fateweaver</em> on a mission to guide a <em>team of mythological gods</em>
+          and take down the <em>Primordials</em>, the universe&rsquo;s most powerful beings, at the end of the world.
+        </p>
+
+        <div class="god-trio">
+          <figure class="as-fig">
+            <div class="as-plate gold media god-frame" data-media="assets/god-anubis" data-mode="still" data-need="Anubis &mdash; god portrait"></div>
+            <figcaption class="god-cap">Anubis</figcaption>
+          </figure>
+          <figure class="as-fig">
+            <div class="as-plate gold media god-frame" data-media="assets/god-itzpapalotl" data-mode="still" data-need="Itzpapalotl &mdash; god portrait"></div>
+            <figcaption class="god-cap">Itzpapalotl</figcaption>
+          </figure>
+          <figure class="as-fig">
+            <div class="as-plate gold media god-frame" data-media="assets/god-morrigan" data-mode="still" data-need="Morrigan &mdash; god portrait"></div>
+            <figcaption class="god-cap">Morrigan</figcaption>
+          </figure>
+        </div>
+
+        <p class="narrative-text what-text step" data-step="1">
+          Explore a world filled with mystery called <em>the Sunken</em> and reweave the
+          <span class="leap">golden threads of fate</span> as you fight to weave the only timeline where you survive.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 8 · NARRATIVE OVERVIEW ===== -->
+  <div class="slide story-slide" id="slide-8" data-slide="8">
     <div class="slide-bg bg-gradient-center bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb purple" style="width:600px;height:600px;top:14%;left:50%;transform:translateX(-50%);animation:calmPulse 8s ease-in-out infinite;"></div>
@@ -1864,6 +2029,7 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="26"></div>
     <div class="slide-inner">
+      <h2 class="section-title">Narrative Overview</h2>
       <div class="story-grid">
 
         <div class="story-row step" data-step="1">
@@ -1904,58 +2070,37 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
   </div>
 
-  <!-- ===== 8 · REWEAVE THE THREADS ===== -->
-  <div class="slide" id="slide-8" data-slide="8">
-    <div class="slide-bg bg-gradient-navy bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb gold" style="width:600px;height:600px;top:20%;left:30%;animation:calmPulse 7s ease-in-out infinite;"></div>
-      <div class="glow-orb blue" style="width:440px;height:440px;bottom:14%;right:22%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="26"></div>
-    <div class="slide-inner">
-      <p class="narrative-text small">
-        <span class="leap">Final Spark</span> is a <em>3D discovery-centric autobattler roguelike</em>
-        where you recruit a <em>team of mythological gods</em> to take down <em>Primordials</em>
-        at the end of the world.
-      </p>
+  <!-- =========================================================
+       GAME DESIGN SECTION  (slides 9-13)
+       ========================================================= -->
 
-      <div class="primordial-row">
-        <div class="media p-1" data-media="assets/primordial-1" data-mode="still" data-need="Primordial 1"></div>
-        <div class="media p-2" data-media="assets/primordial-2" data-mode="still" data-need="Primordial 2"></div>
-        <div class="media p-3" data-media="assets/primordial-3" data-mode="still" data-need="Primordial 3"></div>
-      </div>
-
-      <p class="narrative-text small step" data-step="1">
-        Find and reweave the <span class="leap">golden threads of fate</span> through a vast array
-        of <em>secrets</em> and <em>mysteries</em> hiding within an
-        <em>autobattler roguelike system</em>.
-      </p>
-    </div>
-  </div>
-
-  <!-- ===== 9 · STYLE OVERVIEW — WHO WE'RE LOOKING FOR ===== -->
+  <!-- ===== 9 · GAMEPLAY OVERVIEW ===== -->
   <div class="slide" id="slide-9" data-slide="9">
     <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
-      <div class="glow-orb purple" style="width:540px;height:540px;top:18%;left:16%;animation:calmPulse 7s ease-in-out infinite;"></div>
-      <div class="glow-orb gold"   style="width:460px;height:460px;bottom:12%;right:18%;animation:calmPulse 6s ease-in-out infinite 1s;"></div>
+      <div class="glow-orb blue" style="width:540px;height:540px;top:18%;left:18%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:460px;height:460px;bottom:12%;right:20%;animation:calmPulse 6s ease-in-out infinite 1s;"></div>
     </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">Style Overview</h2>
+      <h2 class="section-title">Gameplay Overview</h2>
       <div class="as-body">
-        <div class="as-split">
-          <div style="width:640px;">
-            <p class="as-copy">We are looking for artists who love making grand, mythical, and moody art.</p>
-            <p class="as-copy">If you love the idea of <em>gods</em> clashing over <em>fate</em> itself in a world plunged into <em>ruin</em> and chaos, then this project is for you!</p>
-          </div>
-          <div class="as-plate gold media" style="width:462px;height:600px;" data-media="assets/style-1" data-mode="still" data-need="Style &mdash; key art"></div>
+        <p class="as-copy center" style="max-width:1200px;">Gameplay is divided into two main components: <em>auto-battler</em> and <em>metroidvania elements</em>.</p>
+        <div class="as-split" style="gap:40px;align-items:flex-start;">
+          <figure class="as-fig">
+            <div class="as-plate media duo-frame" data-media="assets/gameplay-guildrun" data-mode="still" data-need="Guildrun &mdash; gameplay"></div>
+            <figcaption class="as-label">Guildrun</figcaption>
+          </figure>
+          <figure class="as-fig">
+            <div class="as-plate media duo-frame" data-media="assets/gameplay-blueprince" data-mode="still" data-need="Blue Prince &mdash; secrets"></div>
+            <figcaption class="as-label">Blue Prince</figcaption>
+          </figure>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 10 · STYLE OVERVIEW — KEY DETAILS ===== -->
+  <!-- ===== 10 · AUTO-BATTLER ===== -->
   <div class="slide" id="slide-10" data-slide="10">
     <div class="slide-bg bg-gradient-center bg-vignette">
       <div class="bg-grid"></div>
@@ -1964,26 +2109,27 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">Style Overview</h2>
+      <h2 class="section-title">Auto-Battler</h2>
       <div class="as-body">
-        <div class="as-split">
-          <div class="as-card as-pad" style="width:660px;">
-            <p class="as-lead">Key details about our art style:</p>
-            <ul class="as-list">
-              <li>Dark gloomy environments</li>
-              <li>Characters with high contrast</li>
-              <li>Details placed with intention</li>
-              <li>Stylized painterly textures</li>
-              <li>Exaggerated proportions</li>
-            </ul>
-          </div>
-          <div class="as-plate gold media" style="width:380px;height:580px;" data-media="assets/style-morrigan" data-mode="still" data-need="Style &mdash; Morrigan concept"></div>
+        <ul class="as-list point-list">
+          <li>Discover increasingly complex and intertwining combat systems that work together in various ways</li>
+          <li>Using various systems and mechanics such as stats, items, and various abilities</li>
+        </ul>
+        <div class="as-row" style="width:1300px;--gap:40px;">
+          <figure class="as-fig" style="--ar:1.607;">
+            <div class="as-plate media" data-media="assets/autobattler-tft-board" data-mode="still" data-need="Teamfight Tactics &mdash; board"></div>
+            <figcaption class="as-label">Teamfight Tactics</figcaption>
+          </figure>
+          <figure class="as-fig" style="--ar:1.921;">
+            <div class="as-plate media" data-media="assets/autobattler-tft-augments" data-mode="still" data-need="Teamfight Tactics &mdash; augments"></div>
+            <figcaption class="as-label">TFT Augments</figcaption>
+          </figure>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 11 · STYLE OVERVIEW — INSPIRATIONS ===== -->
+  <!-- ===== 11 · AUTO-BATTLER — UNITY DEMO ===== -->
   <div class="slide" id="slide-11" data-slide="11">
     <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
@@ -1992,161 +2138,107 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">Style Overview</h2>
+      <h2 class="section-title">Auto-Battler</h2>
       <div class="as-body">
-        <p class="as-copy center">Our inspirations are the Ori games, Hades, and League of Legends</p>
-        <div class="as-row" style="width:1250px;--gap:28px;">
-          <div class="as-plate media" style="--ar:0.897;" data-media="assets/insp-ori"    data-mode="still" data-need="Inspiration &mdash; Ori"><span class="ct-label">Ori</span></div>
-          <div class="as-plate media" style="--ar:0.899;" data-media="assets/insp-hades"  data-mode="still" data-need="Inspiration &mdash; Hades"><span class="ct-label">Hades</span></div>
-          <div class="as-plate media" style="--ar:0.886;" data-media="assets/insp-league" data-mode="still" data-need="Inspiration &mdash; League of Legends"><span class="ct-label">League of Legends</span></div>
+        <div class="as-stack" style="gap:22px;">
+          <div class="as-split" style="gap:40px;">
+            <div class="as-plate gold media duo-frame" data-media="assets/demo-autobattler-1" data-fit="contain" data-need="Unity demo &mdash; auto-battler clip 1"></div>
+            <div class="as-plate gold media duo-frame" data-media="assets/demo-autobattler-2" data-fit="contain" data-need="Unity demo &mdash; auto-battler clip 2"></div>
+          </div>
+          <p class="as-lead">Unity Demo</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 12 · 3D ART ROLES ===== -->
+  <!-- ===== 12 · SECRETS AND PUZZLES ===== -->
   <div class="slide" id="slide-12" data-slide="12">
     <div class="slide-bg bg-gradient-center bg-vignette">
       <div class="bg-grid"></div>
-      <div class="glow-orb blue" style="width:560px;height:560px;top:16%;left:18%;animation:calmPulse 6s ease-in-out infinite;"></div>
-      <div class="glow-orb gold" style="width:460px;height:460px;bottom:12%;right:24%;animation:calmPulse 7s ease-in-out infinite 1s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
-    <div class="slide-inner top-aligned">
-      <h2 class="section-title">3D Art Roles</h2>
-      <div class="as-body">
-        <div class="as-split" style="gap:40px;">
-          <div class="as-card as-pad" style="width:420px;">
-            <ul class="as-list">
-              <li>Character Modeler</li>
-              <li>Creature Modeler</li>
-              <li>Prop Artist</li>
-              <li>Environmental Artist</li>
-              <li>Animator/Rigger <span class="as-note">(Human/Creature)</span></li>
-            </ul>
-          </div>
-          <div class="as-stack" style="width:800px;">
-            <div class="as-plate media" style="width:800px;height:265px;" data-media="assets/art3d-lineup"   data-mode="still" data-need="3D &mdash; character lineup"></div>
-            <div class="as-plate media" style="width:429px;height:300px;" data-media="assets/art3d-creature" data-mode="still" data-need="3D &mdash; creature concept"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 13 · WHAT WE ALREADY HAVE — ANUBIS ===== -->
-  <div class="slide" id="slide-13" data-slide="13">
-    <div class="slide-bg bg-gradient-navy bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb gold" style="width:620px;height:620px;top:18%;left:30%;animation:calmPulse 7s ease-in-out infinite;"></div>
-      <div class="glow-orb blue" style="width:440px;height:440px;bottom:12%;right:18%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
+      <div class="glow-orb purple" style="width:560px;height:560px;top:18%;left:28%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb gold"   style="width:440px;height:440px;bottom:14%;right:22%;animation:calmPulse 6s ease-in-out infinite 1.3s;"></div>
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="16"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">What We Already Have</h2>
+      <h2 class="section-title">Secrets and Puzzles</h2>
       <div class="as-body">
-        <div class="as-plate gold media" style="width:1130px;height:636px;" data-media="assets/have-anubis-3d" data-mode="still" data-need="Anubis &mdash; 3D character sheet"></div>
+        <ul class="as-list point-list">
+          <li>Centered around hidden secrets and gameplay elements that players need to discover</li>
+          <li>Involving mythological stories turned into gameplay elements</li>
+        </ul>
+        <div class="as-row" style="width:1300px;--gap:40px;">
+          <figure class="as-fig" style="--ar:1.778;">
+            <div class="as-plate media" data-media="assets/secrets-animalwell" data-mode="still" data-need="Animal Well &mdash; secrets reference"></div>
+            <figcaption class="as-label">Animal Well</figcaption>
+          </figure>
+          <figure class="as-fig" style="--ar:2.179;">
+            <div class="as-plate media" data-media="assets/secrets-blueprince" data-mode="still" data-need="Blue Prince &mdash; secrets reference"></div>
+            <figcaption class="as-label">Blue Prince</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 14 · WHAT WE ALREADY HAVE — 3D PROPS ===== -->
+  <!-- ===== 13 · SECRETS AND PUZZLES — DESIGN CONCEPT ===== -->
+  <div class="slide" id="slide-13" data-slide="13">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb purple" style="width:600px;height:600px;top:24%;left:30%;animation:calmPulse 8s ease-in-out infinite;"></div>
+      <div class="glow-orb gold"   style="width:420px;height:420px;top:12%;right:18%;animation:calmPulse 6s ease-in-out infinite 1s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="18"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Secrets and Puzzles</h2>
+      <div class="as-body">
+        <div class="as-stack" style="gap:22px;">
+          <div class="as-row" style="width:1100px;--gap:40px;">
+            <div class="as-plate gold media" style="--ar:1.415;" data-media="assets/secrets-concept-1" data-mode="still" data-need="Secret hint &mdash; design concept 1"></div>
+            <div class="as-plate gold media" style="--ar:1;"     data-media="assets/secrets-concept-2" data-mode="still" data-need="Secret hint &mdash; design concept 2"></div>
+          </div>
+          <p class="as-lead">Design Concept</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       ART SECTION  (slides 14-20)
+       ========================================================= -->
+
+  <!-- ===== 14 · VISUAL PILLARS ===== -->
   <div class="slide" id="slide-14" data-slide="14">
     <div class="slide-bg bg-gradient-center bg-vignette">
       <div class="bg-grid"></div>
-      <div class="glow-orb purple" style="width:580px;height:580px;top:20%;left:24%;animation:calmPulse 8s ease-in-out infinite;"></div>
-      <div class="glow-orb gold"   style="width:420px;height:420px;bottom:14%;right:22%;animation:calmPulse 6s ease-in-out infinite 1.2s;"></div>
+      <div class="glow-orb blue" style="width:520px;height:520px;top:20%;left:16%;animation:calmPulse 6s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:460px;height:460px;bottom:12%;right:20%;animation:calmPulse 8s ease-in-out infinite 1.4s;"></div>
     </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">What We Already Have</h2>
+      <h2 class="section-title">Visual Pillars</h2>
       <div class="as-body">
-        <div class="as-row" style="width:1240px;">
-          <div class="as-plate media" style="--ar:1.286;" data-media="assets/have-prop-1" data-mode="still" data-need="3D prop 1"></div>
-          <div class="as-plate media" style="--ar:0.775;" data-media="assets/have-prop-2" data-mode="still" data-need="3D prop 2"></div>
-          <div class="as-plate media" style="--ar:1.009;" data-media="assets/have-prop-3" data-mode="still" data-need="3D prop 3"></div>
+        <div class="as-split" style="gap:56px;">
+          <div class="as-card as-pad" style="width:540px;">
+            <ul class="as-list">
+              <li>Dark gloomy environments</li>
+              <li>Characters with high contrast</li>
+              <li>Details placed with intention</li>
+              <li>Stylized painterly textures</li>
+              <li>Exaggerated proportions</li>
+            </ul>
+          </div>
+          <div class="god-trio pillars">
+            <div class="as-plate gold media god-frame" data-media="assets/god-anubis"      data-mode="still" data-need="Anubis &mdash; god portrait"></div>
+            <div class="as-plate gold media god-frame" data-media="assets/god-itzpapalotl" data-mode="still" data-need="Itzpapalotl &mdash; god portrait"></div>
+            <div class="as-plate gold media god-frame" data-media="assets/god-morrigan"    data-mode="still" data-need="Morrigan &mdash; god portrait"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 15 · 2D ART ===== -->
+  <!-- ===== 15 · CHARACTER CONCEPT ART ===== -->
   <div class="slide" id="slide-15" data-slide="15">
-    <div class="slide-bg bg-gradient-navy bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb blue" style="width:600px;height:600px;top:15%;left:25%;animation:calmPulse 6s ease-in-out infinite;"></div>
-      <div class="glow-orb gold" style="width:450px;height:450px;bottom:15%;right:20%;animation:calmPulse 8s ease-in-out infinite 1.5s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
-    <div class="slide-inner top-aligned">
-      <h2 class="section-title">2D Art</h2>
-      <div class="as-body">
-        <p class="as-lead">2D artists will be expected to:</p>
-        <div class="as-duties">
-          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Concept characters <em>AND</em> environments</p></div>
-          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Make turnaround character sheets for our 3D artists</p></div>
-          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Draw items and relics</p></div>
-          <div class="as-card as-duty"><span class="as-glyph">&#10070;</span><p>Create 2D backgrounds for our environments</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 16 · 2D ART ROLES ===== -->
-  <div class="slide" id="slide-16" data-slide="16">
-    <div class="slide-bg bg-gradient-center bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb blue" style="width:540px;height:540px;top:18%;left:20%;animation:calmPulse 7s ease-in-out infinite;"></div>
-      <div class="glow-orb gold" style="width:460px;height:460px;bottom:12%;right:20%;animation:calmPulse 6s ease-in-out infinite 1.2s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="10"></div>
-    <div class="slide-inner top-aligned">
-      <h2 class="section-title">2D Art Roles</h2>
-      <div class="as-body">
-        <div class="as-cols">
-          <div class="as-card as-col" style="width:440px;">
-            <div class="as-col-head">Concept Artists<span class="as-note">(Human/Creature)</span></div>
-            <div class="as-col-art">
-              <div class="as-row" style="--gap:10px;">
-                <div class="as-plate media" style="--ar:2.020;" data-media="assets/art2d-concept-1" data-mode="still" data-need="Concept reference 1"></div>
-                <div class="as-plate media" style="--ar:1.283;" data-media="assets/art2d-concept-2" data-mode="still" data-need="Concept reference 2"></div>
-              </div>
-              <div class="as-row" style="--gap:10px;">
-                <div class="as-plate media" style="--ar:1.784;" data-media="assets/art2d-concept-3" data-mode="still" data-need="Concept reference 3"></div>
-                <div class="as-plate media" style="--ar:1.373;" data-media="assets/art2d-concept-4" data-mode="still" data-need="Concept reference 4"></div>
-              </div>
-              <div class="as-plate media" style="width:260px;height:174px;" data-media="assets/art2d-concept-5" data-mode="still" data-need="Concept reference 5"></div>
-            </div>
-          </div>
-
-          <div class="as-card as-col" style="width:340px;">
-            <div class="as-col-head">Portrait Artists</div>
-            <div class="as-col-art">
-              <div class="as-plate media" style="width:304px;height:266px;" data-media="assets/art2d-portrait" data-mode="still" data-need="Portrait reference"></div>
-            </div>
-          </div>
-
-          <div class="as-card as-col" style="width:440px;">
-            <div class="as-col-head">Landscape Artists</div>
-            <div class="as-col-art">
-              <div class="as-row" style="--gap:10px;">
-                <div class="as-plate media" style="--ar:1.786;" data-media="assets/art2d-landscape-1" data-mode="still" data-need="Landscape reference 1"></div>
-                <div class="as-plate media" style="--ar:1.341;" data-media="assets/art2d-landscape-2" data-mode="still" data-need="Landscape reference 2"></div>
-              </div>
-              <div class="as-row" style="--gap:10px;">
-                <div class="as-plate media" style="--ar:0.926;" data-media="assets/art2d-landscape-3" data-mode="still" data-need="Landscape reference 3"></div>
-                <div class="as-plate media" style="--ar:1.791;" data-media="assets/art2d-landscape-4" data-mode="still" data-need="Landscape reference 4"></div>
-              </div>
-              <div class="as-plate media" style="width:260px;height:184px;" data-media="assets/art2d-landscape-5" data-mode="still" data-need="Final Spark environment sketch"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 17 · WHAT WE ALREADY HAVE — 2D ===== -->
-  <div class="slide" id="slide-17" data-slide="17">
     <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb gold"   style="width:560px;height:560px;top:16%;left:22%;animation:calmPulse 7s ease-in-out infinite;"></div>
@@ -2154,73 +2246,120 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">What We Already Have</h2>
+      <h2 class="section-title">Character Concept Art</h2>
       <div class="as-body">
-        <div class="as-split" style="gap:24px;">
-          <div class="as-stack" style="gap:20px;">
-            <div class="as-split" style="gap:20px;">
-              <div class="as-plate media" style="width:406px;height:320px;" data-media="assets/have-morrigan-turnaround" data-mode="still" data-need="Morrigan &mdash; turnaround"></div>
-              <div class="as-plate media" style="width:388px;height:320px;" data-media="assets/have-anubis-sketches"     data-mode="still" data-need="Anubis &mdash; sketches"></div>
-            </div>
-            <div class="as-plate media" style="width:814px;height:270px;" data-media="assets/art3d-lineup" data-mode="still" data-need="Character lineup"></div>
+        <p class="as-aside" style="margin-top:0;">Includes character and creature concept art</p>
+        <!-- Paired by shape so each row's two pieces come out the same size, uncropped. -->
+        <div class="as-stack" style="gap:20px;">
+          <div class="as-row" style="width:1060px;--gap:24px;">
+            <div class="as-plate media" style="--ar:1.431;" data-media="assets/concept-character-1" data-mode="still" data-need="Character concept &mdash; Ame turnaround"></div>
+            <div class="as-plate media" style="--ar:1.431;" data-media="assets/concept-character-3" data-mode="still" data-need="Creature concept &mdash; cosmic"></div>
           </div>
-          <div class="as-plate gold media" style="width:422px;height:610px;" data-media="assets/have-anubis-painting" data-mode="still" data-need="Anubis &mdash; painted concept"></div>
+          <div class="as-row" style="width:1060px;--gap:24px;">
+            <div class="as-plate media" style="--ar:2.390;" data-media="assets/concept-character-2" data-mode="still" data-need="Character concept &mdash; Oya silhouettes"></div>
+            <div class="as-plate media" style="--ar:2.319;" data-media="assets/concept-character-4" data-mode="still" data-need="Creature concept &mdash; sheet"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 18 · TECH ART ===== -->
+  <!-- ===== 16 · ENVIRONMENT CONCEPT ===== -->
+  <div class="slide" id="slide-16" data-slide="16">
+    <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb blue" style="width:540px;height:540px;top:18%;left:20%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:460px;height:460px;bottom:12%;right:20%;animation:calmPulse 6s ease-in-out infinite 1.2s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Environment Concept</h2>
+      <div class="as-body">
+        <p class="as-aside" style="margin-top:0;">Includes set pieces and each region&rsquo;s look and mood</p>
+        <div class="as-row" style="width:1300px;--gap:40px;">
+          <div class="as-plate media" style="--ar:1.432;" data-media="assets/concept-environment-1" data-mode="still" data-need="Environment concept &mdash; sky islands"></div>
+          <div class="as-plate media" style="--ar:2.000;" data-media="assets/concept-environment-2" data-mode="still" data-need="Environment concept &mdash; night island"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 17 · TARGET FIDELITY — STYLIZED REALISM ===== -->
+  <div class="slide" id="slide-17" data-slide="17">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb gold" style="width:620px;height:620px;top:18%;left:30%;animation:calmPulse 7s ease-in-out infinite;"></div>
+      <div class="glow-orb blue" style="width:440px;height:440px;bottom:12%;right:18%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="16"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title fidelity-title">Target Fidelity &mdash; Stylized Realism</h2>
+      <div class="as-body">
+        <!-- The sheets carry their own name headers, so no captions. -->
+        <div class="sheet-grid">
+          <div class="as-plate gold media" data-media="assets/model-anubis"      data-mode="still" data-need="Anubis &mdash; 3D model sheet"></div>
+          <div class="as-plate gold media" data-media="assets/model-itzpapalotl" data-mode="still" data-need="Itzpapalotl &mdash; 3D model sheet"></div>
+          <div class="as-plate gold media" data-media="assets/model-morrigan"    data-mode="still" data-need="Morrigan &mdash; 3D model sheet"></div>
+          <div class="as-plate gold media" data-media="assets/model-ame"         data-mode="still" data-need="Ame no Uzume &mdash; 3D model sheet"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 18 · ENVIRONMENT MODELS ===== -->
   <div class="slide" id="slide-18" data-slide="18">
     <div class="slide-bg bg-gradient-center bg-vignette">
+      <div class="bg-grid"></div>
+      <div class="glow-orb purple" style="width:580px;height:580px;top:20%;left:24%;animation:calmPulse 8s ease-in-out infinite;"></div>
+      <div class="glow-orb gold"   style="width:420px;height:420px;bottom:14%;right:22%;animation:calmPulse 6s ease-in-out infinite 1.2s;"></div>
+    </div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
+    <div class="slide-inner top-aligned">
+      <h2 class="section-title">Environment Models</h2>
+      <div class="as-body">
+        <!-- Two justified rows; each plate keeps its own shape. -->
+        <div class="as-stack" style="gap:20px;">
+          <div class="as-row" style="width:1240px;--gap:20px;">
+            <div class="as-plate media" style="--ar:2.000;" data-media="assets/env-model-1" data-mode="still" data-need="Environment &mdash; island painting"></div>
+            <div class="as-plate media" style="--ar:2.332;" data-media="assets/env-model-3" data-mode="still" data-need="Environment model &mdash; stairs"></div>
+          </div>
+          <div class="as-row" style="width:1240px;--gap:20px;">
+            <div class="as-plate media" style="--ar:1.280;" data-media="assets/env-model-2" data-mode="still" data-need="Environment model &mdash; fountain"></div>
+            <div class="as-plate media" style="--ar:1.787;" data-media="assets/env-model-4" data-mode="still" data-need="Environment model &mdash; floating rocks"></div>
+            <div class="as-plate media" style="--ar:1.286;" data-media="assets/env-model-5" data-mode="still" data-need="Environment model &mdash; branch"></div>
+            <div class="as-plate media" style="--ar:0.775;" data-media="assets/env-model-6" data-mode="still" data-need="Environment model &mdash; crystal rock"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 19 · VFX AND TECH ART ===== -->
+  <div class="slide" id="slide-19" data-slide="19">
+    <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
       <div class="glow-orb purple" style="width:560px;height:560px;top:18%;left:28%;animation:calmPulse 7s ease-in-out infinite;"></div>
       <div class="glow-orb blue"   style="width:440px;height:440px;bottom:14%;right:22%;animation:calmPulse 6s ease-in-out infinite 1.3s;"></div>
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="18"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">Tech Art</h2>
+      <h2 class="section-title">VFX and Tech Art</h2>
       <div class="as-body">
-        <p class="narrative-text mid">
-          Tech artists on this project will be doing mostly 2D and 3D <em>VFX</em> work,
-          with an expertise in writing <em>shaders</em> and/or <em>lighting</em> scenes
-          with purpose a massive plus.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 19 · TECH ART ROLES ===== -->
-  <div class="slide" id="slide-19" data-slide="19">
-    <div class="slide-bg bg-gradient-navy bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb purple" style="width:600px;height:600px;top:24%;left:30%;animation:calmPulse 8s ease-in-out infinite;"></div>
-      <div class="glow-orb blue"   style="width:420px;height:420px;top:12%;right:18%;animation:calmPulse 6s ease-in-out infinite 1s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="14"></div>
-    <div class="slide-inner top-aligned">
-      <h2 class="section-title">Tech Art Roles</h2>
-      <div class="as-body" style="gap:28px;">
-        <div class="as-chips">
-          <div class="as-card as-chip">Shader Artist / Programmer</div>
-          <div class="as-card as-chip">Lighting Artist</div>
-          <div class="as-card as-chip">VFX Artist <span class="as-note">(2D/3D)</span></div>
-        </div>
-        <div class="as-grid" style="width:1000px;">
-          <div class="as-row" style="--gap:16px;">
-            <div class="as-plate media" style="--ar:1.782;" data-media="assets/techart-ref-1" data-mode="still" data-need="Tech art reference 1"></div>
-            <div class="as-plate media" style="--ar:1.780;" data-media="assets/techart-ref-2" data-mode="still" data-need="Tech art reference 2"></div>
-          </div>
-          <div class="as-row" style="--gap:16px;">
-            <div class="as-plate media" style="--ar:2.255;" data-media="assets/techart-ref-3" data-mode="still" data-need="Tech art reference 3"></div>
-            <div class="as-plate media" style="--ar:2.474;" data-media="assets/techart-ref-4" data-mode="still" data-need="Tech art reference 4"></div>
-          </div>
+        <div class="as-split" style="gap:40px;align-items:flex-start;">
+          <figure class="as-fig">
+            <figcaption class="as-label vfx-label">Status VFX</figcaption>
+            <div class="as-plate media duo-frame" data-media="assets/vfx-status" data-need="Status VFX &mdash; heal clip"></div>
+          </figure>
+          <figure class="as-fig">
+            <figcaption class="as-label vfx-label">Attack VFX</figcaption>
+            <div class="as-plate media duo-frame" data-media="assets/vfx-attack" data-need="Attack VFX &mdash; clip"></div>
+          </figure>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 20 · UI ART ROLES ===== -->
+  <!-- ===== 20 · UI ART ===== -->
   <div class="slide" id="slide-20" data-slide="20">
     <div class="slide-bg bg-gradient-center bg-vignette">
       <div class="bg-grid"></div>
@@ -2229,124 +2368,59 @@ b, strong { color: var(--gold-light); font-weight:700; }
     </div>
     <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="12"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">UI Art Roles</h2>
-      <div class="as-body">
-        <p class="as-copy center" style="max-width:1200px;">We are interested in someone who can capture the look of our fallen world with UI that uses an <em>Art Deco aesthetic</em>.</p>
+      <h2 class="section-title">UI Art</h2>
+      <div class="as-body" style="gap:24px;">
+        <p class="as-copy center" style="max-width:1200px;font-size:31px;">We are interested in someone who can capture the look of our fallen world with UI that uses an <em>Art Deco aesthetic</em>.</p>
         <p class="as-aside">Being able to implement UI elements in engine is always a plus!</p>
-        <div class="as-row" style="width:990px;">
-          <div class="as-plate media" style="--ar:0.827;" data-media="assets/ui-mock-hud"   data-mode="still" data-need="UI mockup &mdash; HUD"></div>
-          <div class="as-plate media" style="--ar:1.719;" data-media="assets/ui-mock-board" data-mode="still" data-need="UI mockup &mdash; board"></div>
+        <div class="as-row" style="width:1220px;">
+          <div class="as-plate media" style="--ar:1.025;" data-media="assets/ui-art-1" data-mode="still" data-need="UI art &mdash; class card"></div>
+          <div class="as-plate media" style="--ar:1.779;" data-media="assets/ui-art-2" data-mode="still" data-need="UI art &mdash; god select"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== 21 · UI ART ROLES — REFERENCES ===== -->
+  <!-- ===== 21 · OPEN ROLES + QR ===== -->
   <div class="slide" id="slide-21" data-slide="21">
     <div class="slide-bg bg-gradient-navy bg-vignette">
       <div class="bg-grid"></div>
-      <div class="glow-orb blue" style="width:560px;height:560px;top:20%;left:16%;animation:calmPulse 6s ease-in-out infinite;"></div>
-      <div class="glow-orb gold" style="width:440px;height:440px;bottom:14%;right:24%;animation:calmPulse 8s ease-in-out infinite 1s;"></div>
+      <div class="glow-orb blue" style="width:600px;height:600px;top:15%;left:22%;animation:calmPulse 5s ease-in-out infinite;"></div>
+      <div class="glow-orb gold" style="width:460px;height:460px;top:34%;right:12%;animation:calmPulse 7s ease-in-out infinite 1s;"></div>
     </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="10"></div>
+    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="28"></div>
     <div class="slide-inner top-aligned">
-      <h2 class="section-title">UI Art Roles</h2>
-      <div class="as-body">
-        <div class="as-split" style="gap:40px;">
-          <div class="as-card as-pad" style="width:300px;">
-            <ul class="as-list">
-              <li>2D UI Artist</li>
-            </ul>
+      <h2 class="section-title">Open Roles</h2>
+      <div class="as-body" style="gap:34px;">
+        <div class="as-split" style="gap:64px;align-items:center;">
+          <div class="roles-board">
+            <div class="role-card roles-art">
+              <div class="role-category">Art</div>
+              <ul class="role-list">
+                <li>Environment Modeler</li>
+                <li>Rigger / Animator</li>
+                <li>VFX Artist</li>
+                <li>UI Artist</li>
+                <li>Environmental Concept Artist</li>
+              </ul>
+            </div>
+            <div class="role-card">
+              <div class="role-category">Design</div>
+              <ul class="role-list"><li>System Designers</li></ul>
+            </div>
+            <div class="role-card">
+              <div class="role-category">Narrative</div>
+              <ul class="role-list"><li>Writers</li></ul>
+            </div>
+            <div class="role-card solo"><div class="role-category">QA Testers</div></div>
+            <div class="role-card solo"><div class="role-category">Usability</div></div>
           </div>
-          <div class="as-refs" style="width:900px;">
-            <div class="as-ref">
-              <span class="as-label">Minimal</span>
-              <div class="as-row" style="--gap:12px;">
-                <div class="as-plate media" style="--ar:1.777;" data-media="assets/uiref-minimal-1" data-mode="still" data-need="Minimal &mdash; reference 1"></div>
-                <div class="as-plate media" style="--ar:1.597;" data-media="assets/uiref-minimal-2" data-mode="still" data-need="Minimal &mdash; reference 2"></div>
-                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-minimal-3" data-mode="still" data-need="Minimal &mdash; reference 3"></div>
-                <div class="as-plate media" style="--ar:1.004;" data-media="assets/uiref-minimal-4" data-mode="still" data-need="Minimal &mdash; reference 4"></div>
-              </div>
-            </div>
-            <div class="as-ref">
-              <span class="as-label">Crown Gambit</span>
-              <div class="as-row" style="--gap:12px;">
-                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-crown-1" data-mode="still" data-need="Crown Gambit &mdash; reference 1"></div>
-                <div class="as-plate media" style="--ar:1.777;" data-media="assets/uiref-crown-2" data-mode="still" data-need="Crown Gambit &mdash; reference 2"></div>
-                <div class="as-plate media" style="--ar:1.773;" data-media="assets/uiref-crown-3" data-mode="still" data-need="Crown Gambit &mdash; reference 3"></div>
-              </div>
-            </div>
-            <div class="as-ref">
-              <span class="as-label">Sultan&rsquo;s Game</span>
-              <div class="as-row" style="--gap:12px;">
-                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-1" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 1"></div>
-                <div class="as-plate media" style="--ar:1.780;" data-media="assets/uiref-sultan-2" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 2"></div>
-                <div class="as-plate media" style="--ar:1.162;" data-media="assets/uiref-sultan-3" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 3"></div>
-                <div class="as-plate media" style="--ar:1.500;" data-media="assets/uiref-sultan-4" data-mode="still" data-need="Sultan&rsquo;s Game &mdash; reference 4"></div>
-              </div>
-            </div>
+          <div class="roles-qr">
+            <div class="final-qr big media" data-media="assets/qr" data-mode="still" data-need="QR code"></div>
+            <span class="as-lead">Scan to Apply</span>
           </div>
         </div>
+        <p class="roles-note">If your role isn&rsquo;t listed, please still fill out the form and let us know you&rsquo;re <em>interested!</em></p>
       </div>
-    </div>
-  </div>
-
-  <!-- ===== 22 · ART CLOSING ===== -->
-  <div class="slide" id="slide-22" data-slide="22">
-    <div class="slide-bg bg-gradient-center bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb gold" style="width:600px;height:600px;top:20%;left:28%;animation:calmPulse 7s ease-in-out infinite;"></div>
-      <div class="glow-orb blue" style="width:460px;height:460px;bottom:12%;right:22%;animation:calmPulse 9s ease-in-out infinite 1.5s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="22"></div>
-    <div class="slide-inner top-aligned">
-      <h2 class="section-title">Closing</h2>
-      <div class="as-body">
-        <div>
-          <p class="narrative-text small">If you are an artist who did not see their particular role,</p>
-          <p class="narrative-text"><span class="leap">Let us know!</span></p>
-          <p class="narrative-text small">We are looking for anyone interested in bringing Final Spark to life!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== 23 · CLOSE ===== -->
-  <div class="slide" id="slide-23" data-slide="23">
-    <div class="slide-bg bg-gradient-navy bg-vignette">
-      <div class="bg-grid"></div>
-      <div class="glow-orb blue" style="width:600px;height:600px;top:15%;left:30%;animation:calmPulse 5s ease-in-out infinite;"></div>
-      <div class="glow-orb gold" style="width:400px;height:400px;top:40%;left:55%;animation:calmPulse 7s ease-in-out infinite 1s;"></div>
-    </div>
-    <div class="sparkle-layer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;" data-sparkles="30"></div>
-    <div class="slide-inner">
-      <div class="title-lightning-wrapper">
-        <div class="title-glow"></div>
-        <div class="title-bolt left">
-          <svg width="120" height="180" viewBox="0 0 120 180" fill="none">
-            <path d="M60 0 L30 70 L50 70 L20 180 L80 90 L55 90 L90 0 Z" fill="url(#bolt-c)" opacity="0.9"/>
-            <defs><linearGradient id="bolt-c" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#93c5fd"/><stop offset="50%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#60a5fa"/>
-            </linearGradient></defs>
-          </svg>
-        </div>
-        <div class="title-bolt right">
-          <svg width="120" height="180" viewBox="0 0 120 180" fill="none">
-            <path d="M60 0 L30 70 L50 70 L20 180 L80 90 L55 90 L90 0 Z" fill="url(#bolt-d)" opacity="0.9"/>
-            <defs><linearGradient id="bolt-d" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#93c5fd"/><stop offset="50%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#60a5fa"/>
-            </linearGradient></defs>
-          </svg>
-        </div>
-        <h1 class="hero-title">FINAL SPARK</h1>
-      </div>
-      <div class="glow-divider wide"></div>
-      <div class="tagline">Reweave your Fate</div>
-      <div class="deck-subtitle" style="margin-top:28px;">
-        <span class="name">Jack Desmarais-Harris</span>
-        <span class="detail">jdesmara@usc.edu</span>
-      </div>
-      <div class="final-qr media" data-media="assets/qr" data-mode="still" data-need="QR code"></div>
     </div>
   </div>
 
