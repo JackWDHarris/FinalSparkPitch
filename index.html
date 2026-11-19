@@ -1401,13 +1401,82 @@ b, strong { color: var(--gold-light); font-weight:700; }
   justify-content: center;
   gap: 40px;
 }
-.god-trio.pillars { gap: 22px; }
-
-/* Portrait frames: fixed 4:5 so the three gods read as a matched set. The art
-   is anchored to the top so a crop costs feet, never heads. */
-.god-frame { width: 192px; height: 278px; }                    /* paintings are 0.69 */
-.god-trio.pillars .god-frame { width: 214px; height: 310px; }
+/* Portrait frames: sized to the paintings' 0.69 so the three gods read as a
+   matched set. The art is anchored high so any crop costs feet, never heads. */
+.god-frame { width: 192px; height: 278px; }
 .god-frame > img { object-position: 50% 15%; }
+
+/* ============================================
+   VISUAL PILLARS (14) - portraits as the hero, pillars flanking them
+   ============================================ */
+.pillars-stage {
+  display: grid;
+  grid-template-columns: 210px auto 210px;
+  align-items: center;
+  gap: 44px;
+}
+
+.pillar-col {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.pillar-col.left  { text-align: right; }
+.pillar-col.right { text-align: left; }
+.pillar-col li {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #e6ecf8;
+}
+.pillar-num {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--gold-light);
+}
+
+/* A triptych: the centre god stands taller, all three sit in a warm glow. */
+.triptych {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.triptych-glow {
+  position: absolute;
+  inset: -70px -90px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 55%, rgba(245,158,11,0.22) 0%, rgba(124,58,237,0.12) 42%, transparent 70%);
+  filter: blur(18px);
+}
+/* Three classes deep so it beats .as-plate.gold, which is declared later. */
+.triptych .as-plate.god-frame {
+  border-color: rgba(251,191,36,0.55);
+  box-shadow: 0 0 0 1px rgba(251,191,36,0.12) inset,
+              0 0 48px rgba(245,158,11,0.30),
+              0 28px 60px rgba(0,0,0,0.75);
+}
+.triptych .tri-left,
+.triptych .tri-right  { width: 285px; height: 413px; }
+.triptych .tri-center { width: 330px; height: 478px; }
+.triptych .god-frame > img { object-position: 50% 50%; }   /* frames match the art exactly */
+
+.slide.active .triptych .god-frame { animation: tripRise .9s cubic-bezier(.16,1,.3,1) both; }
+.slide.active .triptych .tri-left  { animation-delay: .12s; }
+.slide.active .triptych .tri-right { animation-delay: .22s; }
+@keyframes tripRise {
+  from { opacity: 0; transform: translateY(18px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
 
 .god-cap {
   font-family: 'Cinzel', serif;
@@ -2219,21 +2288,23 @@ b, strong { color: var(--gold-light); font-weight:700; }
     <div class="slide-inner top-aligned">
       <h2 class="section-title">Visual Pillars</h2>
       <div class="as-body">
-        <div class="as-split" style="gap:56px;">
-          <div class="as-card as-pad" style="width:540px;">
-            <ul class="as-list">
-              <li>Dark gloomy environments</li>
-              <li>Characters with high contrast</li>
-              <li>Details placed with intention</li>
-              <li>Stylized painterly textures</li>
-              <li>Exaggerated proportions</li>
-            </ul>
+        <!-- The portraits are the hero; the five pillars flank them. -->
+        <div class="pillars-stage">
+          <ol class="pillar-col left">
+            <li><span class="pillar-num">I</span>Dark gloomy environments</li>
+            <li><span class="pillar-num">II</span>Characters with high contrast</li>
+            <li><span class="pillar-num">III</span>Details placed with intention</li>
+          </ol>
+          <div class="triptych">
+            <div class="triptych-glow"></div>
+            <div class="as-plate gold media god-frame tri-left"   data-media="assets/god-anubis"      data-mode="still" data-need="Anubis &mdash; god portrait"></div>
+            <div class="as-plate gold media god-frame tri-center" data-media="assets/god-itzpapalotl" data-mode="still" data-need="Itzpapalotl &mdash; god portrait"></div>
+            <div class="as-plate gold media god-frame tri-right"  data-media="assets/god-morrigan"    data-mode="still" data-need="Morrigan &mdash; god portrait"></div>
           </div>
-          <div class="god-trio pillars">
-            <div class="as-plate gold media god-frame" data-media="assets/god-anubis"      data-mode="still" data-need="Anubis &mdash; god portrait"></div>
-            <div class="as-plate gold media god-frame" data-media="assets/god-itzpapalotl" data-mode="still" data-need="Itzpapalotl &mdash; god portrait"></div>
-            <div class="as-plate gold media god-frame" data-media="assets/god-morrigan"    data-mode="still" data-need="Morrigan &mdash; god portrait"></div>
-          </div>
+          <ol class="pillar-col right">
+            <li><span class="pillar-num">IV</span>Stylized painterly textures</li>
+            <li><span class="pillar-num">V</span>Exaggerated proportions</li>
+          </ol>
         </div>
       </div>
     </div>
